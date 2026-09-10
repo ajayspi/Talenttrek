@@ -14,6 +14,7 @@ import {
   Menu,
   MessageSquare,
   Mic,
+  Monitor,
   Phone,
   ShoppingBag,
   Soup,
@@ -31,8 +32,9 @@ const INDUSTRY_ICONS: Record<string, typeof Car> = {
   "hospitality-wellness": UtensilsCrossed,
   automotive: Car,
   retail: ShoppingBag,
-  fb: Soup,
+  "food-beverage": Soup,
   healthcare: HeartPulse,
+  "information-technology": Monitor,
 };
 const NAV_LINKS = [
   { name: "About", href: "/about" },

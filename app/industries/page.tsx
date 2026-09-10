@@ -13,7 +13,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 export const metadata: Metadata = buildMetadata({
   title: "Industries",
   description:
-    "AI solutions shaped to hospitality & wellness, automotive, retail, food & beverage and healthcare — the sectors where phone and order volume is highest.",
+    "AI solutions shaped to hospitality & wellness, automotive, retail, food & beverage, healthcare and IT — the sectors where phone and order volume is highest.",
   path: "/industries",
 });
 
@@ -48,7 +48,7 @@ export default function IndustriesPage() {
           serviceLd({
             name: "Talent Trek industry solutions",
             description:
-              "Voice, chat and agent AI configured for hospitality, automotive, retail, F&B and healthcare.",
+              "Voice, chat and agent AI configured for hospitality, automotive, retail, F&B, healthcare and IT.",
             path: "/industries",
           }),
           faqPageLd(INDUSTRY_FAQS),

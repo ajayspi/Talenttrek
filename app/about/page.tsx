@@ -50,8 +50,8 @@ const TIMELINE = [
   },
   {
     year: "2026",
-    title: "Five industries, one engine",
-    body: "Talent Trek crosses 500 deployments across hospitality, automotive, retail, F&B and healthcare — still Made in Melbourne.",
+    title: "Six industries, one engine",
+    body: "Talent Trek crosses 500 deployments across hospitality, automotive, retail, F&B, healthcare and IT — still Made in Melbourne.",
   },
 ];
 
@@ -158,7 +158,7 @@ export default function AboutPage() {
           <AnimatedSection>
             <p className="eyebrow mb-3">Our story</p>
             <h2 className="text-3xl md:text-4xl">
-              From mapping call flows to five industries
+              From mapping call flows to six industries
             </h2>
             <p className="mt-4 text-lg text-ink-muted">
               Talent Trek exists because the phone is still how Australian

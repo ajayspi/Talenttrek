@@ -22,6 +22,7 @@ const INDUSTRY_LINKS = [
   { label: "Retail", href: "/industries/retail" },
   { label: "Food & Beverage", href: "/industries/food-beverage" },
   { label: "Healthcare", href: "/industries/healthcare" },
+  { label: "IT & Technology", href: "/industries/information-technology" },
 ];
 
 const LEGAL_LINKS = [

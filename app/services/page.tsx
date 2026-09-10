@@ -25,6 +25,7 @@ const FIT: Record<string, Record<string, 0 | 1 | 2>> = {
     Retail: 2,
     "Food & Beverage": 2,
     Healthcare: 1,
+    "IT & Technology": 1,
   },
   "chat-ai-automotive": {
     "Hospitality & Wellness": 1,
@@ -32,6 +33,7 @@ const FIT: Record<string, Record<string, 0 | 1 | 2>> = {
     Retail: 1,
     "Food & Beverage": 1,
     Healthcare: 1,
+    "IT & Technology": 1,
   },
   "dynamic-drivethru": {
     "Hospitality & Wellness": 1,
@@ -39,6 +41,7 @@ const FIT: Record<string, Record<string, 0 | 1 | 2>> = {
     Retail: 1,
     "Food & Beverage": 2,
     Healthcare: 0,
+    "IT & Technology": 0,
   },
   "ai-agent": {
     "Hospitality & Wellness": 1,
@@ -46,6 +49,7 @@ const FIT: Record<string, Record<string, 0 | 1 | 2>> = {
     Retail: 1,
     "Food & Beverage": 1,
     Healthcare: 2,
+    "IT & Technology": 2,
   },
 };
 

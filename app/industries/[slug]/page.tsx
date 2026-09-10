@@ -152,6 +152,36 @@ export default async function IndustryPage({
         </div>
       </section>
 
+      {industry.features.length > 0 && (
+        <section className="section section-alt border-y border-line">
+          <div className="container-site">
+            <SectionHeading
+              eyebrow="Why Talent Trek?"
+              title={`Built for ${industry.name}`}
+              align="center"
+            />
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {industry.features.map((f) => (
+                <AnimatedSection key={f.title} className="card h-full overflow-hidden">
+                  <div className="aspect-[16/10] overflow-hidden border-b border-line">
+                    <img
+                      src={f.image}
+                      alt=""
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-lg">{f.title}</h3>
+                    <p className="mt-2 text-sm text-ink-muted">{f.body}</p>
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Animated metrics */}
       <section className="section section-alt border-y border-line">
         <div className="container-site">

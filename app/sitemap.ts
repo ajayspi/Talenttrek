@@ -18,6 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/industries/retail",
     "/industries/food-beverage",
     "/industries/healthcare",
+    "/industries/information-technology",
     "/blog",
     "/contact",
     "/privacy",

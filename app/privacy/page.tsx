@@ -32,7 +32,7 @@ export default function PrivacyPage() {
             Talent Trek Pty Ltd is an Australian company with ABN 13 674 722 135,
             headquartered at {SITE.address.full}, Melbourne, Victoria. We
             deliver AI voice, chat and agent solutions to businesses across
-            hospitality, automotive, retail, food & beverage and healthcare.
+            hospitality, automotive, retail, food & beverage, healthcare and IT.
           </p>
           <p>
             Contact:{" "}

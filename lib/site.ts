@@ -8,7 +8,7 @@ export const SITE = {
   wpUrl: process.env.NEXT_PUBLIC_WP_URL ?? "https://talenttrek.com.au",
   tagline: "The polite face of AI",
   description:
-    "Voice Commerce, Chat AI Automotive, Dynamic DriveThru and AI Agent solutions for Australian hospitality, automotive, retail, F&B and healthcare businesses.",
+    "Voice Commerce, Chat AI Automotive, Dynamic DriveThru and AI Agent solutions for Australian hospitality, automotive, retail, F&B, healthcare and IT businesses.",
   phone: {
     display: "1800 860 624",
     href: "tel:1800860624",

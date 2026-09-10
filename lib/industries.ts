@@ -1,7 +1,13 @@
 /**
- * The five industries Talent Trek serves. Shared by the home industries
+ * The six industries Talent Trek serves. Shared by the home industries
  * strip, the /industries page and the footer.
  */
+
+export interface IndustryFeature {
+  title: string;
+  body: string;
+  image: string;
+}
 
 export interface Industry {
   slug: string;
@@ -10,6 +16,11 @@ export interface Industry {
   pains: string[];
   solutions: string[];
   services: string[];
+  /** Path to hero image in /public/industries, or null to use the token visual. */
+  image: string | null;
+  imageAlt: string;
+  /** Feature cards for the "Why Talent Trek?" section. */
+  features: IndustryFeature[];
 }
 
 export const INDUSTRIES: Industry[] = [
@@ -28,6 +39,30 @@ export const INDUSTRIES: Industry[] = [
       "Chat AI covers pre-arrival questions, upgrades and late checkouts",
     ],
     services: ["Voice Commerce", "AI Agent", "Chat AI Automotive"],
+    image: "/industries/hospitality/hero.png",
+    imageAlt: "A modern hotel lobby with warm lighting, representing voice-powered guest experiences",
+    features: [
+      {
+        title: "Autonomous AI Agents",
+        body: "AI agents that understand, reason and take meaningful action across voice, chat, kiosks and mobile.",
+        image: "/industries/hospitality/agents.png",
+      },
+      {
+        title: "Agentic+ Framework",
+        body: "AI agents collaborate, switch roles and complete multi-step tasks with precision.",
+        image: "/industries/hospitality/agentic.png",
+      },
+      {
+        title: "Built-In Voice Intelligence",
+        body: "Proprietary voice recognition for fast, natural, accurate voice interactions at scale.",
+        image: "/industries/hospitality/voice-intel.png",
+      },
+      {
+        title: "GenAI-Driven Builder",
+        body: "Build and deploy voice AI agents tailored to your hospitality workflows.",
+        image: "/industries/hospitality/genai-builder.png",
+      },
+    ],
   },
   {
     slug: "automotive",
@@ -44,6 +79,30 @@ export const INDUSTRIES: Industry[] = [
       "Every after-hours enquiry qualified and queued for the morning briefing",
     ],
     services: ["Chat AI Automotive", "AI Agent"],
+    image: "/industries/automotive/hero.png",
+    imageAlt: "A modern car dashboard with voice control, representing in-vehicle voice AI",
+    features: [
+      {
+        title: "Voice Commerce Ecosystem",
+        body: "Turn conversations into commerce — drivers order coffee, book tables and shop hands-free.",
+        image: "/industries/automotive/commerce.png",
+      },
+      {
+        title: "Advanced Voice Customization",
+        body: "Shape your in-car voice assistant tone, behaviour and knowledge for a branded experience.",
+        image: "/industries/automotive/customization.png",
+      },
+      {
+        title: "Seamless Integration",
+        body: "Voice AI integrates into your vehicle infotainment system, powered by large language models.",
+        image: "/industries/automotive/integration.png",
+      },
+      {
+        title: "Generative AI Intelligence",
+        body: "Real-time data from weather and traffic to stocks, sports and restaurant suggestions.",
+        image: "/industries/automotive/voice-ai.png",
+      },
+    ],
   },
   {
     slug: "retail",
@@ -60,6 +119,9 @@ export const INDUSTRIES: Industry[] = [
       "One assistant answering consistently on every channel",
     ],
     services: ["Voice Commerce", "AI Agent"],
+    image: null,
+    imageAlt: "",
+    features: [],
   },
   {
     slug: "food-beverage",
@@ -76,6 +138,55 @@ export const INDUSTRIES: Industry[] = [
       "Consistent, gentle upsells on every order, every hour",
     ],
     services: ["Dynamic DriveThru", "Voice Commerce"],
+    image: "/industries/restaurants/hero.png",
+    imageAlt: "A vibrant restaurant scene with voice-enabled ordering technology",
+    features: [
+      {
+        title: "Smart Drive-Thru",
+        body: "AI-powered drive-thru voice interactions that reduce wait times and increase order accuracy.",
+        image: "/industries/restaurants/drive-thru.png",
+      },
+      {
+        title: "Express Lane Ordering",
+        body: "Customers pre-order before reaching the counter or drive-thru to keep the line moving.",
+        image: "/industries/restaurants/express-lane.png",
+      },
+      {
+        title: "Intelligent Kiosks",
+        body: "Voice-enabled kiosks designed to personalize every in-store transaction.",
+        image: "/industries/restaurants/kiosks.png",
+      },
+      {
+        title: "Smart Voice Ordering",
+        body: "Customers place orders through voice commands via phone, SMS or mobile apps.",
+        image: "/industries/restaurants/voice-ordering.png",
+      },
+      {
+        title: "In-Car Ordering Integration",
+        body: "Seamless food ordering through in-car voice assistants for drivers on the go.",
+        image: "/industries/restaurants/in-car.png",
+      },
+      {
+        title: "AI-Powered Staff Assist",
+        body: "Instant, voice-accessible guidance from digital handbooks and training materials.",
+        image: "/industries/restaurants/staff-assist.png",
+      },
+      {
+        title: "Voice-Driven Insights",
+        body: "Real-time feedback from team and guest interactions to improve service quality.",
+        image: "/industries/restaurants/voice-insights.png",
+      },
+      {
+        title: "Kitchen Display Sync",
+        body: "Orders land straight in your kitchen display — no re-keying, no double-handling.",
+        image: "/industries/restaurants/kitchen-display.png",
+      },
+      {
+        title: "Peak Order Overflow",
+        body: "Voice Commerce absorbs delivery and pickup spikes without a single dropped call.",
+        image: "/industries/restaurants/peak-orders.png",
+      },
+    ],
   },
   {
     slug: "healthcare",
@@ -92,6 +203,44 @@ export const INDUSTRIES: Industry[] = [
       "Every interaction logged for privacy and compliance",
     ],
     services: ["AI Agent", "Voice Commerce"],
+    image: null,
+    imageAlt: "",
+    features: [],
+  },
+  {
+    slug: "information-technology",
+    name: "IT & Technology",
+    tagline: "Smarter, faster IT support powered by Voice AI",
+    pains: [
+      "Long wait times and confusing help desk tickets",
+      "Repetitive tier-1 issues flooding your IT team",
+      "After-hours IT requests with nowhere to go",
+    ],
+    solutions: [
+      "AI agents deliver instant, voice-guided IT support that resolves issues faster",
+      "Automate frequent tasks like password resets, software installs and VPN access",
+      "24/7 multichannel support via chat, voice and SMS for global teams",
+    ],
+    services: ["AI Agent"],
+    image: "/industries/it/hero.png",
+    imageAlt: "A modern IT workspace with AI-powered support agents assisting employees",
+    features: [
+      {
+        title: "Smart Virtual IT Agent",
+        body: "Automate frequent support tasks like password resets, software installations and VPN access.",
+        image: "/industries/it/agent.png",
+      },
+      {
+        title: "24/7 Multichannel Support",
+        body: "Always-available assistance via chat, voice or SMS — perfect for remote and hybrid teams.",
+        image: "/industries/it/multichannel.png",
+      },
+      {
+        title: "Seamless Ticket Management",
+        body: "Create, update and resolve tickets in ServiceNow, Jira or BMC with human-like guidance.",
+        image: "/industries/it/tickets.png",
+      },
+    ],
   },
 ];
 
@@ -173,5 +322,15 @@ export const INDUSTRY_EXTRAS: Record<string, IndustryExtras> = {
       { label: "After-hours coverage", value: 100, suffix: "%" },
     ],
     poly: [88, 86, 90, 60, 98],
+  },
+  "information-technology": {
+    summary:
+      "Say goodbye to long wait times and confusing help desk tickets. Talent Trek intelligent AI agents deliver instant, voice-guided IT support that helps your team solve issues faster, without the friction.",
+    metrics: [
+      { label: "Tickets auto-resolved", value: 66, suffix: "%" },
+      { label: "After-hours coverage", value: 100, suffix: "%" },
+      { label: "Avg. first response", value: 2, suffix: "s" },
+    ],
+    poly: [95, 70, 98, 75, 80],
   },
 };
