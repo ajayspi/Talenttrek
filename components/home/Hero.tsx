@@ -6,12 +6,14 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import ParticleWave from "@/components/anim/ParticleWave";
+import WaveBackground from "@/components/anim/WaveBackground";
 
 const ROTATING_WORDS = ["Modern Commerce", "Conversations", "Orders"];
 
 /**
- * Home hero: gradient backdrop, rotating gradient headline, 2 CTAs
- * and a bouncing scroll cue. Rotation is disabled under reduced motion.
+ * Home hero: bold gradient backdrop, particle wave animation, rotating
+ * gradient headline, wave divider, 2 CTAs and a bouncing scroll cue.
+ * Rotation is disabled under reduced motion.
  */
 export default function Hero() {
   const reducedMotion = useReducedMotion();
@@ -27,7 +29,10 @@ export default function Hero() {
   }, [reducedMotion]);
 
   return (
-    <section className="relative overflow-hidden" aria-label="Introduction">
+    <section
+      className="relative overflow-hidden bg-gradient-to-b from-surface via-primary-dim/20 to-surface"
+      aria-label="Introduction"
+    >
       <ParticleWave />
       <div className="container-site relative flex min-h-[86vh] flex-col items-center justify-center py-24 text-center md:min-h-[680px]">
         <motion.p
@@ -40,7 +45,7 @@ export default function Hero() {
           Voice · Chat · Agents
         </motion.p>
 
-        <h1 className="max-w-5xl text-hero font-extrabold">
+        <h1 className="max-w-5xl text-hero font-extrabold leading-tight">
           The Voice of{" "}
           <span className="inline-grid overflow-hidden align-baseline">
             <AnimatePresence mode="wait" initial={false}>
@@ -86,6 +91,8 @@ export default function Hero() {
           </Link>
         </motion.div>
       </div>
+
+      <WaveBackground />
 
       <div
         className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce text-ink-muted"

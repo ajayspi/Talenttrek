@@ -5,6 +5,7 @@ import { INDUSTRIES, INDUSTRY_EXTRAS, getIndustry } from "@/lib/industries";
 import { SERVICES } from "@/lib/services";
 import { buildMetadata } from "@/lib/metadata";
 import ParticleWave from "@/components/anim/ParticleWave";
+import WaveBackground from "@/components/anim/WaveBackground";
 import IndustryVisual from "@/components/anim/IndustryVisual";
 import MetricsRow from "@/components/industries/MetricsRow";
 import PolyGraph from "@/components/industries/PolyGraph";
@@ -83,8 +84,8 @@ export default async function IndustryPage({
       />
 
       {/* Hero with particle wave */}
-      <section className="relative overflow-hidden border-b border-line">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-dim via-transparent to-accent-dim" aria-hidden />
+      <section className="relative overflow-hidden border-b border-line bg-gradient-to-b from-surface via-primary-dim/15 to-surface">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-dim/30 via-transparent to-accent-dim/30" aria-hidden />
         <ParticleWave />
         <div className="container-site relative py-16 md:py-24">
           <nav aria-label="Breadcrumb" className="mb-5 text-sm text-ink-muted">
@@ -118,6 +119,7 @@ export default async function IndustryPage({
             </div>
           </div>
         </div>
+        <WaveBackground />
       </section>
 
       {/* Pain → Solution */}

@@ -30,22 +30,21 @@ interface Row {
 }
 
 /**
- * Clean background "particle wave" for hero sections.
+ * Enhanced background "particle wave" for hero sections.
  *
- * A subtle grid of small dots that undulates in a travelling sine wave,
- * with very faint wave-lines joining each row. Canvas 2D only — no WebGL —
- * so it is cheap to run on every page. Theme-aware (reads the --primary
- * CSS token so it adapts to light/dark), pauses when offscreen or when the
- * tab is hidden, renders a single static frame under
- * prefers-reduced-motion. Decorative: pointer-events none + aria-hidden.
+ * A dynamic grid of dots that undulates in a travelling sine wave,
+ * with connecting wave-lines joining each row. Canvas 2D only — no WebGL.
+ * Theme-aware (reads --primary and --accent CSS tokens), pauses when
+ * offscreen, renders static frame under prefers-reduced-motion.
+ * Decorative: pointer-events none + aria-hidden.
  */
 export default function ParticleWave({
   className = "",
-  spacing = 48,
-  amplitude = 20,
-  speed = 0.9,
-  maxParticles = 700,
-  opacity = 0.55,
+  spacing = 42,
+  amplitude = 24,
+  speed = 1.1,
+  maxParticles = 900,
+  opacity = 0.75,
 }: ParticleWaveProps) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -66,6 +65,7 @@ export default function ParticleWave({
     let w = 0;
     let h = 0;
     let color = "#2563eb";
+    let accentColor = "#7c3aed";
     let pts: Pt[] = [];
     let rows: Row[] = [];
 
@@ -73,7 +73,11 @@ export default function ParticleWave({
       const c = getComputedStyle(document.documentElement)
         .getPropertyValue("--primary")
         .trim();
+      const a = getComputedStyle(document.documentElement)
+        .getPropertyValue("--accent")
+        .trim();
       if (c) color = c;
+      if (a) accentColor = a;
     };
     readTheme();
 
@@ -137,10 +141,8 @@ export default function ParticleWave({
       ctx.clearRect(0, 0, w, h);
       if (pts.length === 0) return;
 
-      // Faint wave-lines joining each row.
-      ctx.strokeStyle = color;
-      ctx.lineWidth = 1;
-      ctx.globalAlpha = 0.055 * opacity;
+      // Wave-lines joining each row with gradient effect.
+      ctx.lineWidth = 1.2;
       for (const row of rows) {
         if (row.idxs.length < 2) continue;
         ctx.beginPath();
@@ -150,16 +152,28 @@ export default function ParticleWave({
           if (i === 0) ctx.moveTo(p.x, y);
           else ctx.lineTo(p.x, y);
         }
+        ctx.strokeStyle = color;
+        ctx.globalAlpha = 0.1 * opacity;
         ctx.stroke();
       }
 
-      // Dots.
-      ctx.fillStyle = color;
+      // Dots with accent highlights.
       for (const p of pts) {
-        ctx.globalAlpha = p.a;
+        const y = waveY(p, t);
+        ctx.globalAlpha = p.a * opacity;
+        ctx.fillStyle = color;
         ctx.beginPath();
-        ctx.arc(p.x, waveY(p, t), p.r, 0, Math.PI * 2);
+        ctx.arc(p.x, y, p.r, 0, Math.PI * 2);
         ctx.fill();
+
+        // Highlight larger particles with accent color.
+        if (p.r > 1.5) {
+          ctx.globalAlpha = p.a * opacity * 0.5;
+          ctx.fillStyle = accentColor;
+          ctx.beginPath();
+          ctx.arc(p.x, y, p.r * 0.6, 0, Math.PI * 2);
+          ctx.fill();
+        }
       }
       ctx.globalAlpha = 1;
     };

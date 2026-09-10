@@ -3,6 +3,7 @@ import Link from "next/link";
 import { buildMetadata } from "@/lib/metadata";
 import BlogCard from "@/components/shared/BlogCard";
 import ParticleWave from "@/components/anim/ParticleWave";
+import WaveBackground from "@/components/anim/WaveBackground";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import { JsonLd, websiteLd } from "@/components/seo/JsonLd";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
@@ -42,9 +43,9 @@ export default async function BlogPage() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-line">
+      <section className="relative overflow-hidden border-b border-line bg-gradient-to-b from-surface via-primary-dim/15 to-surface">
         <div
-          className="absolute inset-0 bg-gradient-to-br from-primary-dim via-transparent to-accent-dim"
+          className="absolute inset-0 bg-gradient-to-br from-primary-dim/30 via-transparent to-accent-dim/30"
           aria-hidden
         />
         <ParticleWave />
@@ -63,6 +64,7 @@ export default async function BlogPage() {
             chat and agent AI across Australian businesses.
           </p>
         </div>
+        <WaveBackground />
       </section>
 
       {/* Grid */}

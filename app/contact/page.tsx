@@ -4,6 +4,7 @@ import { SITE } from "@/lib/site";
 import { buildMetadata } from "@/lib/metadata";
 import ContactForm from "@/components/shared/ContactForm";
 import ParticleWave from "@/components/anim/ParticleWave";
+import WaveBackground from "@/components/anim/WaveBackground";
 import SectionHeading from "@/components/shared/SectionHeading";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import FAQAccordion from "@/components/shared/FAQAccordion";
@@ -60,9 +61,9 @@ export default function ContactPage() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-line">
+      <section className="relative overflow-hidden border-b border-line bg-gradient-to-b from-surface via-primary-dim/15 to-surface">
         <div
-          className="absolute inset-0 bg-gradient-to-br from-primary-dim via-transparent to-accent-dim"
+          className="absolute inset-0 bg-gradient-to-br from-primary-dim/30 via-transparent to-accent-dim/30"
           aria-hidden
         />
         <ParticleWave />
@@ -86,6 +87,7 @@ export default function ContactPage() {
             English.
           </p>
         </div>
+        <WaveBackground />
       </section>
 
       {/* Form + details + map */}
