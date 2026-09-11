@@ -1,4 +1,7 @@
-﻿import Link from "next/link";
+﻿import { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 import {
   ArrowRight,
   Bot,
@@ -39,13 +42,40 @@ const ICONS: Record<ServiceIcon, typeof Mic> = {
   globe: Globe,
 };
 
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
 /**
- * Shared detail template for the four service pages:
- * hero â†’ problem â†’ 6 features â†’ 4-step HowTo â†’ 3 use cases â†’ FAQ â†’ CTA.
+ * Shared detail template for the service pages:
+ * hero › problem › 6 features › 4-step HowTo › 3 use cases › FAQ › CTA.
  * JSON-LD (Service + HowTo + FAQPage + Breadcrumb) is emitted by each page.
  */
 export default function ServiceDetail({ service }: { service: Service }) {
   const Icon = ICONS[service.icon];
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray<HTMLElement>(".section").forEach((sec) => {
+        ScrollTrigger.create({
+          trigger: sec,
+          start: "top 80%",
+          onEnter: () => {
+            gsap.from(sec.querySelectorAll(".st-animate"), {
+              y: 30,
+              opacity: 0,
+              duration: 0.6,
+              ease: "power3.out",
+              stagger: 0.08,
+            });
+          },
+          once: true,
+        });
+      });
+    });
+    return () => ctx.revert();
+  }, []);
 
   return (
     <>
@@ -54,27 +84,38 @@ export default function ServiceDetail({ service }: { service: Service }) {
       {/* GSAP Hero */}
       <HeroGsap name={service.name} tagline={service.tagline} short={service.short} />
 
-      {/* Problem */}
-                  <span
-                    className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-accent"
-                    aria-hidden
-                  />
-                  {p}
-                </li>
-              ))}
-            </ul>
-          </AnimatedSection>
+            {/* Problem */}
+      <section className="section">
+        <div className="container-site">
+          <div className="st-animate mx-auto max-w-3xl text-center">
+            <SectionHeading eyebrow="The problem" title={service.problem.title} />
+            <p className="mt-4 text-lg text-ink-muted">{service.problem.body}</p>
+          </div>
+          <div className="st-animate mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {service.problem.points.map((p) => (
+              <AnimatedSection key={p} className="card flex items-start gap-3 p-5">
+                <span
+                  className="mt-0.5 text-accent"
+                  aria-hidden
+                >
+                  <CircleCheck className="h-5 w-5" />
+                </span>
+                <span className="text-sm font-semibold text-ink">{p}</span>
+              </AnimatedSection>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Features */}
+            {/* Features */}
       <section className="section section-alt border-y border-line">
         <div className="container-site">
           <SectionHeading
             eyebrow="Features"
             title={`What you get with ${service.name}`}
+            className="st-animate"
           />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="st-animate grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {service.features.map((f, i) => (
               <AnimatedSection key={f.title} className="card h-full p-6">
                 <FeatureIcon index={i} />
@@ -89,11 +130,12 @@ export default function ServiceDetail({ service }: { service: Service }) {
       {/* How it works â€” HowTo */}
       <section className="section">
         <div className="container-site">
-          <SectionHeading
+                    <SectionHeading
             eyebrow="How it works"
             title={`Getting ${service.name} live`}
+            className="st-animate"
           />
-          <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <ol className="st-animate grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {service.howItWorks.map((step, i) => (
               <li key={step.title}>
                 <AnimatedSection className="card h-full p-6">
@@ -112,8 +154,8 @@ export default function ServiceDetail({ service }: { service: Service }) {
       {/* Use cases */}
       <section className="section section-alt border-y border-line">
         <div className="container-site">
-          <SectionHeading eyebrow="Use cases" title="Where it shines" />
-          <div className="grid gap-6 md:grid-cols-3">
+          <SectionHeading eyebrow="Use cases" title="Where it shines" className="st-animate" />
+          <div className="st-animate grid gap-6 md:grid-cols-3">
             {service.useCases.map((u) => (
               <AnimatedSection key={u.title} className="card h-full p-7">
                 <span className="tag">{u.industry}</span>
@@ -128,7 +170,7 @@ export default function ServiceDetail({ service }: { service: Service }) {
       {/* FAQ */}
       <section className="section">
         <div className="container-site">
-          <div className="mx-auto max-w-3xl">
+          <div className="st-animate mx-auto max-w-3xl">
             <SectionHeading eyebrow="FAQ" title={`${service.name} questions`} />
             <FAQAccordion items={service.faq} />
           </div>
