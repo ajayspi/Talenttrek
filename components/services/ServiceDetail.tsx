@@ -1,12 +1,16 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import {
   ArrowRight,
   Bot,
   Car,
   CircleCheck,
+  Database,
+  Globe,
   MessageSquare,
   Mic,
   Phone,
+  Square,
+  CalendarDays,
 } from "lucide-react";
 import type { Service, ServiceIcon } from "@/lib/services";
 import { SITE } from "@/lib/site";
@@ -20,17 +24,24 @@ import VoiceWave from "@/components/anim/VoiceWave";
 import ServiceGlyph from "@/components/anim/ServiceGlyph";
 import ParticleWave from "@/components/anim/ParticleWave";
 import WaveBackground from "@/components/anim/WaveBackground";
+import HeroGsap from "./HeroGsap";
 
 const ICONS: Record<ServiceIcon, typeof Mic> = {
   mic: Mic,
   chat: MessageSquare,
   drive: Car,
   agent: Bot,
+  square: Square,
+  crm: MessageSquare,
+  database: Database,
+  phone: Phone,
+  calendar: CalendarDays,
+  globe: Globe,
 };
 
 /**
  * Shared detail template for the four service pages:
- * hero → problem → 6 features → 4-step HowTo → 3 use cases → FAQ → CTA.
+ * hero â†’ problem â†’ 6 features â†’ 4-step HowTo â†’ 3 use cases â†’ FAQ â†’ CTA.
  * JSON-LD (Service + HowTo + FAQPage + Breadcrumb) is emitted by each page.
  */
 export default function ServiceDetail({ service }: { service: Service }) {
@@ -40,65 +51,10 @@ export default function ServiceDetail({ service }: { service: Service }) {
     <>
       <PageEventTracker event="service_view" label={service.name} />
 
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-line bg-gradient-to-b from-surface via-primary-dim/15 to-surface">
-        <div
-          className="absolute inset-0 bg-gradient-to-br from-primary-dim/30 via-transparent to-accent-dim/30"
-          aria-hidden
-        />
-        <ParticleWave />
-        <div className="container-site relative grid items-center gap-10 py-16 md:grid-cols-2 md:py-24">
-          <div>
-            <nav aria-label="Breadcrumb" className="mb-5 text-sm text-ink-muted">
-              <Link href="/" className="hover:text-accent">Home</Link>
-              <span aria-hidden> / </span>
-              <Link href="/services" className="hover:text-accent">Services</Link>
-              <span aria-hidden> / </span>
-              <span aria-current="page">{service.name}</span>
-            </nav>
-            <Badge>{service.tagline}</Badge>
-            <h1 className="mt-4 text-4xl md:text-5xl">{service.name}</h1>
-            <p className="mt-5 max-w-lg text-lg text-ink-muted">
-              {service.short}
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link href="/contact" className="btn btn-primary">
-                Book a demo <ArrowRight className="arrow h-4 w-4" aria-hidden />
-              </Link>
-              <a href={SITE.phone.href} className="btn btn-ghost">
-                <Phone className="h-4 w-4" aria-hidden /> {SITE.phone.display}
-              </a>
-            </div>
-          </div>
-          <div className="service-visual relative flex aspect-[16/10] flex-col items-center justify-center overflow-hidden rounded-2xl border border-line shadow-card">
-            <div className="relative flex h-full w-full flex-col items-center justify-center gap-6 p-8">
-              <div className="scale-[1.6]">
-                <ServiceGlyph icon={service.icon} />
-              </div>
-              <VoiceWave className="h-20 w-full max-w-xs sm:h-24" bars={12} />
-              <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/80 px-4 py-2 text-sm font-bold text-ink backdrop-blur">
-                <Icon className="h-4 w-4 text-[var(--accent-logo)]" aria-hidden />
-                {service.name} — live voice
-              </span>
-            </div>
-          </div>
-        </div>
-        <WaveBackground />
-      </section>
+      {/* GSAP Hero */}
+      <HeroGsap name={service.name} tagline={service.tagline} short={service.short} />
 
       {/* Problem */}
-      <section className="section">
-        <div className="container-site grid items-start gap-10 md:grid-cols-2">
-          <AnimatedSection>
-            <p className="eyebrow mb-3">The problem</p>
-            <h2 className="text-3xl">{service.problem.title}</h2>
-            <p className="mt-4 text-lg text-ink-muted">{service.problem.body}</p>
-          </AnimatedSection>
-          <AnimatedSection className="card p-7" >
-            <h3 className="mb-4 text-lg">Sound familiar?</h3>
-            <ul className="space-y-3">
-              {service.problem.points.map((p) => (
-                <li key={p} className="flex items-start gap-3 text-ink-muted">
                   <span
                     className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-accent"
                     aria-hidden
@@ -130,7 +86,7 @@ export default function ServiceDetail({ service }: { service: Service }) {
         </div>
       </section>
 
-      {/* How it works — HowTo */}
+      {/* How it works â€” HowTo */}
       <section className="section">
         <div className="container-site">
           <SectionHeading
@@ -193,7 +149,7 @@ export default function ServiceDetail({ service }: { service: Service }) {
                 <span className="text-deep-accent">your</span> customer calls
               </h2>
               <p className="relative mx-auto mt-4 max-w-xl text-deep-text">
-                Book a free demo — we&apos;ll walk through your workflows and
+                Book a free demo â€” we&apos;ll walk through your workflows and
                 scope a pilot with measurable outcomes.
               </p>
               <div className="relative mt-8 flex flex-wrap justify-center gap-4">
@@ -211,3 +167,4 @@ export default function ServiceDetail({ service }: { service: Service }) {
     </>
   );
 }
+

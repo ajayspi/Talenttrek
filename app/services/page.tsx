@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { SERVICES } from "@/lib/services";
 import { INDUSTRIES } from "@/lib/industries";
@@ -13,7 +13,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 export const metadata: Metadata = buildMetadata({
   title: "Services",
   description:
-    "Voice Commerce, Chat AI Automotive, Dynamic DriveThru and AI Agent — deployable standalone or as one connected experience.",
+    "Voice Commerce, Chat AI Automotive, Dynamic DriveThru, AI Agent, Square Integration, Custom CRM, CRM Management, AI Phone Receptionist, AI Appointment Booking and Multilingual AI Assistant â€” deployable standalone or as one connected experience.",
   path: "/services",
 });
 
@@ -77,7 +77,7 @@ function FitCell({ level }: { level: 0 | 1 | 2 }) {
   return (
     <>
       <span className="mx-auto block text-ink-muted" aria-hidden>
-        –
+        â€“
       </span>
       <span className="sr-only">Not applicable</span>
     </>
@@ -128,7 +128,7 @@ export default function ServicesPage() {
             </h1>
             <p className="mt-5 max-w-lg text-lg text-ink-muted">
               Every service below is deployable standalone or as part of one
-              connected experience — pick the workflow that hurts most and
+              connected experience â€” pick the workflow that hurts most and
               start there.
             </p>
           </div>
@@ -146,7 +146,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Comparison table — services × industries */}
+      {/* Comparison table â€” services Ã— industries */}
       <section className="section section-alt border-t border-line" aria-labelledby="comparison">
         <div className="container-site">
           <AnimatedSection className="mb-10 max-w-2xl">
@@ -156,14 +156,14 @@ export default function ServicesPage() {
             </h2>
             <p className="mt-4 text-ink-muted">
               A quick matrix of where each service is a core fit versus a
-              strong supporting player. Every combination is configurable —
+              strong supporting player. Every combination is configurable â€”
               this is where they earn their keep fastest.
             </p>
           </AnimatedSection>
           <AnimatedSection className="card overflow-x-auto">
             <table className="w-full min-w-[640px] text-left text-sm">
               <caption className="sr-only">
-                Fit of each Talent Trek service to each industry — filled
+                Fit of each Talent Trek service to each industry â€” filled
                 circle means core fit, outlined circle means supported
               </caption>
               <thead>
@@ -238,3 +238,4 @@ function AbstractIllustration() {
     </svg>
   );
 }
+

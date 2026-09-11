@@ -4,7 +4,17 @@
  * the four /services/[slug] detail pages.
  */
 
-export type ServiceIcon = "mic" | "chat" | "drive" | "agent";
+export type ServiceIcon =
+  | "mic"
+  | "chat"
+  | "drive"
+  | "agent"
+  | "square"
+  | "crm"
+  | "database"
+  | "phone"
+  | "calendar"
+  | "globe";
 
 export interface ServiceFaq {
   q: string;
@@ -448,6 +458,234 @@ export const SERVICES: Service[] = [
         q: "How do we start small?",
         a: "Most deployments begin with one contained workflow — after-hours enquiries or booking confirmations — and expand on evidence.",
       },
+    ],
+  },
+  {
+    slug: "square-integration",
+    name: "Square Integration",
+    tagline: "POS, CRM and Voice AI in one.",
+    short:
+      "Combine Square's smart operations with Talent Trek's CRM and Voice AI — manage POS, appointments, marketing and messaging from one place.",
+    icon: "square",
+    tags: ["POS", "Appointments", "Marketing"],
+    problem: {
+      title: "Your restaurant tools don't talk to each other",
+      body: "Square handles POS but your CRM, booking and marketing tools are separate islands. Square Integration unifies them with Voice AI.",
+      points: ["POS data trapped in silos", "Manual appointment booking", "Disconnected marketing campaigns", "No unified guest profile view"],
+    },
+    features: [
+      { title: "All-in-One POS", body: "Dine-in, takeout and delivery support with item modifiers, split checks, contactless payments and staff tracking." },
+      { title: "Smart Appointment Scheduling", body: "Voice AI turns conversations into table reservations with real-time waitlists and automated reminders." },
+      { title: "Marketing Campaigns", body: "Email and SMS templates, loyalty promos, birthday offers and smart guest segmentation with ROI tracking." },
+      { title: "Dashboard and Analytics", body: "Shift-based sales reports, menu insights, table turnover trends and lifetime value data in one view." },
+      { title: "App Marketplace", body: "POS and KDS extensions, HR, accounting, kitchen automation and delivery platform integrations." },
+      { title: "Voice AI Unification", body: "Voice AI connects and powers the entire stack — orders, bookings and enquiries handled conversationally." },
+    ],
+    howItWorks: [
+      { title: "Connect", body: "Link your Square account and map your existing tools to the integration layer." },
+      { title: "Configure", body: "Set up appointment rules, marketing automations and Voice AI conversational flows." },
+      { title: "Launch", body: "Go live with unified POS, booking and voice ordering working together." },
+      { title: "Optimise", body: "Refine campaigns and voice flows based on real performance data." },
+    ],
+    useCases: [
+      { industry: "Restaurants", title: "Full-service dining", body: "Unified POS, reservation and marketing for busy restaurants handling dine-in, takeout and events." },
+      { industry: "Cafés", title: "Quick service", body: "Fast POS with voice ordering and automated loyalty rewards for high-volume cafés." },
+      { industry: "Hospitality groups", title: "Multi-venue", body: "Centralised control across multiple locations with unified guest profiles and marketing." },
+    ],
+    faq: [
+      { q: "Do I already need Square?", body: "Yes — this service connects and extends your existing Square POS with CRM and Voice AI capabilities." },
+      { q: "How long does integration take?", body: "Typical setup is 2-4 weeks depending on the complexity of your existing tools and workflows." },
+      { q: "Can I keep my existing CRM?", body: "We integrate with your existing systems where possible, adding Voice AI and unifying the data layer." },
+    ],
+  },
+  {
+    slug: "custom-crm-services",
+    name: "Custom CRM Services",
+    tagline: "CRM built around your workflow.",
+    short:
+      "Every restaurant operates differently. We build custom CRM systems that match your unique processes, brand tone and guest engagement strategies.",
+    icon: "crm",
+    tags: ["Custom CRM", "Voice-Enabled", "Data-Driven"],
+    problem: {
+      title: "One-size-fits-all CRM doesn't fit restaurants",
+      body: "Off-the-shelf CRMs force your workflow into their structure. We build systems the other way around — your processes, brand and guest engagement strategies come first.",
+      points: ["Generic CRM doesn't match workflows", "No voice integration", "Dashboards that don't drive decisions", "Security concerns with cloud platforms"],
+    },
+    features: [
+      { title: "AI-Powered, Voice-Enabled", body: "Every custom CRM is built ready for voice — integrating seamlessly with Talent Trek Voice AI." },
+      { title: "Data-Driven Decisions", body: "Custom dashboards identifying top staff, loyalty-driving menu items and guest trends." },
+      { title: "Enterprise-Grade Security", body: "Industry-standard security scaling from 1 location to 100+." },
+      { title: "Brand-Tone Matching", body: "CRM communicates in your brand's voice across all guest touchpoints." },
+      { title: "Custom Workflows", body: "Built around your unique booking, ordering and engagement processes." },
+      { title: "Scalable Architecture", body: "Grows with your business without re-platforming or data migration." },
+    ],
+    howItWorks: [
+      { title: "Discover", body: "Map your current workflows, brand tone and guest engagement strategies." },
+      { title: "Design", body: "Custom CRM architecture designed around your specific needs." },
+      { title: "Build", body: "Develop and integrate with existing tools and Voice AI." },
+      { title: "Launch", body: "Deployed with training, documentation and ongoing support." },
+    ],
+    useCases: [
+      { industry: "Fine Dining", title: "High-touch guest journeys", body: "Detailed profiles, preference tracking and personalised communications." },
+      { industry: "Fast Casual", title: "Speed and loyalty", body: "Loyalty programs, repeat visits and operational efficiency." },
+      { industry: "Multi-location", title: "Centralised control", body: "Unified CRM with centralised reporting and local flexibility." },
+    ],
+    faq: [
+      { q: "How is this different from off-the-shelf?", body: "Built specifically for your workflows, brand and processes — not a generic template." },
+      { q: "Can it integrate with my POS?", body: "Yes — Square, Clover, Lightspeed and other major POS systems." },
+      { q: "How long does a custom build take?", body: "Typically 4-8 weeks with iterative delivery throughout." },
+    ],
+  },
+  {
+    slug: "crm-management",
+    name: "CRM Management",
+    tagline: "Grow loyalty. Personalise every guest.",
+    short:
+      "Build deeper guest connections, drive repeat visits and streamline service — powered by AI and real-time insights built for hospitality.",
+    icon: "database",
+    tags: ["Guest Profiles", "Loyalty", "Real-Time Insights"],
+    problem: {
+      title: "Relationships matter as much as recipes",
+      body: "In hospitality, guest relationships drive repeat visits. Our CRM captures preferences, predicts loyalty behaviour and gives real-time insights to personalise every interaction.",
+      points: ["Guest preferences scattered across systems", "No predictive loyalty insights", "Disconnected communication channels", "Manual data entry eating staff time"],
+    },
+    features: [
+      { title: "AI-Powered Guest Profiles", body: "Automatically capture diner preferences, order history, allergies and feedback into detailed profiles." },
+      { title: "Predictive Loyalty Engine", body: "AI identifies high-value guests and triggers offers, rewards and reminders to keep them coming back." },
+      { title: "Voice and Multichannel", body: "Voice ordering, reservations, kiosk inputs and delivery platforms synced into one guest timeline." },
+      { title: "Real-Time Insights", body: "Revenue per guest, loyalty behaviour, table turnover and staff performance in one dashboard." },
+      { title: "Safe and Scalable", body: "Enterprise-grade security for single cafés through to 100+ outlet groups." },
+      { title: "Automated Campaigns", body: "Triggered emails and SMS based on guest behaviour, preferences and visit history." },
+    ],
+    howItWorks: [
+      { title: "Connect", body: "Integrate POS, reservation and communication platforms." },
+      { title: "Capture", body: "Guest data automatically captured and organised into rich profiles." },
+      { title: "Activate", body: "Loyalty campaigns, personalised offers and automated reminders go live." },
+      { title: "Optimise", body: "Real-time insights refine campaigns and guest engagement strategies." },
+    ],
+    useCases: [
+      { industry: "Restaurants", title: "Repeat visit growth", body: "Personalised offers based on visit history and preferences." },
+      { industry: "Cafés", title: "Regular recognition", body: "Remembering orders, names and preferences for every regular." },
+      { industry: "Hospitality groups", title: "Cross-venue loyalty", body: "Unified loyalty program across multiple venues." },
+    ],
+    faq: [
+      { q: "What data does the CRM capture?", body: "Order history, preferences, allergies, feedback, visit frequency, spend patterns and communication preferences." },
+      { q: "How does the loyalty engine work?", body: "AI identifies high-value guests and automates personalised offers to drive repeat visits." },
+      { q: "Is guest data secure?", body: "Enterprise-grade security compliant with Australian data protection standards." },
+    ],
+  },
+  {
+    slug: "ai-phone-receptionist",
+    name: "AI Phone Receptionist",
+    tagline: "Never miss a call again.",
+    short:
+      "A professional AI receptionist that answers, qualifies and routes calls 24/7 — for professional services, healthcare, trades and real estate across Australia.",
+    icon: "phone",
+    tags: ["Call Answering", "Lead Qualification", "After-Hours"],
+    problem: {
+      title: "Every missed call is a missed opportunity",
+      body: "Professional services, healthcare and trades still rely on humans to answer phones. After hours, during peak times, or when staff are busy — calls go unanswered. Our AI receptionist answers on the first ring, qualifies callers and routes them intelligently.",
+      points: ["After-hours calls going to voicemail", "Staff pulled away from clients", "Inconsistent caller experiences", "Leads lost during peak times"],
+    },
+    features: [
+      { title: "Natural Australian Voice", body: "A warm, professional Australian accent that represents your brand — not a robotic menu tree." },
+      { title: "24/7 Call Answering", body: "Never miss a call — day, night, weekends and public holidays." },
+      { title: "Intelligent Call Routing", body: "Calls qualified and routed to the right person with full context." },
+      { title: "Lead Qualification", body: "Captures caller details, enquiry type and urgency for your team." },
+      { title: "Appointment Booking", body: "Books appointments directly into your calendar during the call." },
+      { title: "Custom Scripts", body: "Receptionist trained on your services, pricing FAQs and brand voice." },
+    ],
+    howItWorks: [
+      { title: "Configure", body: "Set up your receptionist with services, team structure and call handling rules." },
+      { title: "Train", body: "AI learns your brand voice, common questions and escalation procedures." },
+      { title: "Go Live", body: "Receptionist answers calls — optional supervised period before full autonomy." },
+      { title: "Refine", body: "Ongoing tuning based on call recordings and team feedback." },
+    ],
+    useCases: [
+      { industry: "Healthcare", title: "Patient enquiries", body: "Appointment booking, prescription reminders and after-hours triage." },
+      { industry: "Real Estate", title: "Property enquiries", body: "Tenant applications, inspection bookings and vendor enquiries." },
+      { industry: "Trades", title: "Job booking", body: "Emergency call-outs, quote requests and job scheduling." },
+    ],
+    faq: [
+      { q: "Will callers know it's an AI?", body: "You choose — introduce by name and role, or keep transparent as an AI assistant." },
+      { q: "How does after-hours work?", body: "Calls answer 24/7 with your after-hours message or live handling, with SMS alerts for urgent matters." },
+      { q: "Can it transfer to a human?", body: "Yes — complex calls warm-transfer to your team with full context so the caller never repeats themselves." },
+    ],
+  },
+  {
+    slug: "ai-appointment-booking",
+    name: "AI Appointment Booking",
+    tagline: "Book 24/7. Never double-book.",
+    short:
+      "AI-powered appointment scheduling that lets clients book, reschedule and cancel by voice or chat — with smart reminders and calendar sync.",
+    icon: "calendar",
+    tags: ["Scheduling", "Reminders", "Calendar Sync"],
+    problem: {
+      title: "Phone tag wastes everyone's time",
+      body: "Clients call to book, staff answer and manually enter details, then reminders get forgotten. Our AI appointment booking system lets clients book by voice or chat 24/7, with automatic reminders and two-way calendar sync.",
+      points: ["Phone tag for simple bookings", "Manual data entry errors", "Missed reminders causing no-shows", "Double-bookings from miscommunication"],
+    },
+    features: [
+      { title: "Voice and Chat Booking", body: "Clients book via phone call or chat — whichever they prefer, 24/7." },
+      { title: "Two-Way Calendar Sync", body: "Syncs with Google Calendar, Outlook or Apple Calendar in real time." },
+      { title: "Smart Reminders", body: "Automated SMS and email reminders reduce no-shows by up to 40%." },
+      { title: "Self-Service Portal", body: "Clients can reschedule or cancel without calling your office." },
+      { title: "Waitlist Management", body: "Automatically offers cancelled slots to waitlisted clients." },
+      { title: "Multi-Staff Support", body: "Routes to the right practitioner based on service type and availability." },
+    ],
+    howItWorks: [
+      { title: "Connect", body: "Link your calendar and define services, durations and availability rules." },
+      { title: "Configure", body: "Set up reminder schedules, waitlist rules and booking policies." },
+      { title: "Launch", body: "Clients book by phone or chat — with optional staff approval workflows." },
+      { title: "Optimise", body: "Track no-show rates, booking volume and peak times." },
+    ],
+    useCases: [
+      { industry: "Healthcare", title: "Patient appointments", body: "Booking, reminders and follow-ups for GPs, dentists and specialists." },
+      { industry: "Beauty and Wellness", title: "Salon and spa", body: "Self-service booking with automated reminders for hair, beauty and spa." },
+      { industry: "Professional Services", title: "Consultations", body: "Client intake, scheduling and document reminders for legal and financial firms." },
+    ],
+    faq: [
+      { q: "What calendars does it support?", body: "Google Calendar, Microsoft Outlook/365 and Apple Calendar — with real-time two-way sync." },
+      { q: "Can clients reschedule themselves?", body: "Yes — clients receive a link to reschedule or cancel without calling your office." },
+      { q: "How much does it reduce no-shows?", body: "Automated reminders typically reduce no-shows by 30-40% within the first month." },
+    ],
+  },
+  {
+    slug: "multilingual-ai-assistant",
+    name: "Multilingual AI Assistant",
+    tagline: "Speak every language your customers do.",
+    short:
+      "AI voice and chat assistants that speak Mandarin, Cantonese, Hindi, Vietnamese, Arabic and more — built for Australia's diverse communities.",
+    icon: "globe",
+    tags: ["Multilingual", "Voice", "Chat", "24/7"],
+    problem: {
+      title: "English-only AI excludes your customers",
+      body: "Over 30% of Australians speak a language other than English at home. Your AI assistant should speak their language — not force them into English. We build multilingual assistants for voice and chat in 10+ languages.",
+      points: ["English-only assistants exclude non-English speakers", "Multilingual staff expensive and hard to find", "Inconsistent service across languages", "Missed opportunity in diverse communities"],
+    },
+    features: [
+      { title: "10+ Languages", body: "Mandarin, Cantonese, Hindi, Vietnamese, Arabic, Korean, Japanese, Spanish, Italian and more." },
+      { title: "Native Accents", body: "Natural-sounding speech in each language — not machine-translated monotone." },
+      { title: "Automatic Language Detection", body: "Detects the caller's language and switches seamlessly mid-conversation." },
+      { title: "Voice and Chat", body: "Full multilingual support across both voice calls and chat interfaces." },
+      { title: "Cultural Context", body: "Beyond translation — understands cultural norms, date formats and local conventions." },
+      { title: "Easy Expansion", body: "New languages can be added in weeks, not months." },
+    ],
+    howItWorks: [
+      { title: "Select Languages", body: "Choose which languages your customers need, with priority ordering." },
+      { title: "Train", body: "Train the assistant on your services, terminology and brand voice in each language." },
+      { title: "Launch", body: "Multilingual assistant handles voice and chat in all selected languages." },
+      { title: "Expand", body: "Add new languages as your customer base grows — without rebuilding." },
+    ],
+    useCases: [
+      { industry: "Healthcare", title: "Multilingual patient support", body: "Intake, appointment booking and after-hours support in the community's language." },
+      { industry: "Retail", title: "Multilingual customer service", body: "Product enquiries, order support and returns in the customer's preferred language." },
+      { industry: "Hospitality", title: "Multilingual guest experience", body: "Bookings, room service and concierge in Mandarin, Hindi, Arabic and more." },
+    ],
+    faq: [
+      { q: "Which languages are supported?", body: "Mandarin, Cantonese, Hindi, Vietnamese, Arabic, Korean, Japanese, Spanish, Italian and more on request." },
+      { q: "How accurate is the language detection?", body: "Over 95% accuracy for the top 10 languages, with seamless fallback to your preferred default." },
+      { q: "Can it handle code-switching?", body: "Yes — detects when a caller switches languages and adapts in real time." },
     ],
   },
 ];
