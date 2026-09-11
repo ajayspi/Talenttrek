@@ -37,6 +37,5 @@ export const SITE = {
     color: "/logo-color.png",
     white: "/logo-white.png",
     icon: "/icon.png",
-    heroGif: "/hero.gif",
   },
 } as const;

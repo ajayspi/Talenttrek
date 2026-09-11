@@ -192,7 +192,7 @@ export default function ServiceDetail({ service }: { service: Service }) {
                 See {service.name} on{" "}
                 <span className="text-deep-accent">your</span> customer calls
               </h2>
-                            <p className="relative mx-auto mt-4 max-w-xl text-deep-text">
+              <p className="relative mx-auto mt-4 max-w-xl text-deep-text">
                 Book a free demo — we&apos;ll walk through your workflows and
                 scope a pilot with measurable outcomes.
               </p>

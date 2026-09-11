@@ -1,8 +1,8 @@
 # Talent Trek — Next.js Site
 
 Marketing site for Talent Trek (talenttrek.com.au) — AI Voice, Chat &
-Agent solutions. Next.js 15 App Router + Tailwind CSS + Framer Motion +
-Three.js, pulling blog content from the live WordPress REST API.
+Agent solutions. Next.js 15 App Router + Tailwind CSS + Framer Motion,
+pulling blog content from the live WordPress REST API.
 
 ## Quick start
 
@@ -27,17 +27,17 @@ npm run start      # serve production build
 
 ```
 app/                    # App Router routes (all server components by default)
-  page.tsx              # Home — hero canvas, stats, bento, strip, HowTo, FAQ
+  page.tsx              # Home — particle hero, stats, grid, strip, HowTo, FAQ
   about/ services/* industries/ contact/ privacy/ terms/
   blog/                 # Listing (ISR 1h) + [slug] (SSG, sanitized WP content)
   sitemap.ts robots.ts  # Generated from static routes + WP posts
 components/
   layout/               # Navbar (glass + mega-dropdown + drawer), Footer,
-                        # ThemeProvider, DarkModeToggle, CookieConsent (+GA4),
-                        # MagneticCursor
-  home/                 # HeroCanvas (three.js, GIF fallback), Hero, StatsCounter,
-                        # ServicesGrid, IndustriesStrip, PartnersMarquee,
-                        # TestimonialsCarousel
+                        # ThemeProvider, DarkModeToggle, CookieConsent (+GA4)
+  anim/                 # ParticleWave (Canvas-2D hero background), WaveBackground,
+                        # VoiceWave, ServiceGlyph, FeatureIcon, IndustryVisual
+  home/                 # Hero, StatsCounter, ServicesGrid, IndustriesStrip,
+                        # PartnersMarquee, TestimonialsCarousel
   shared/               # ServiceCard, BlogCard, FAQAccordion, ContactForm (CF7),
                         # AnimatedSection, SectionHeading, Badge, trackers
   seo/                  # JsonLd builders + BreadcrumbJsonLd
@@ -48,7 +48,7 @@ lib/
   wordpress.ts          # Typed WP REST fetcher — fails soft, ISR 3600
   services.ts           # Content for the 4 services (pages, dropdown, footer)
   industries.ts faqs.ts metadata.ts fonts.ts motion-variants.ts analytics.ts
-hooks/                  # useInView, useCountUp, useMagneticCursor
+hooks/                  # useInView, useCountUp
 styles/
   tokens.css            # Design tokens — palette, fluid type scale, motion
   animations.css        # Keyframes (marquee, drift, shimmer), reduced-motion
@@ -78,7 +78,7 @@ styles/
   `industry_view`, `blog_read` (50%/100% scroll) — all consent-gated.
 - **Accessibility:** WCAG 2.2 AA target — skip link, focus rings, focus
   trap in mobile drawer, `aria-expanded` disclosures, reduced-motion
-  fallbacks throughout (Framer + CSS + three.js static frame).
+  fallbacks throughout (Framer + CSS + Canvas static frame).
 - **SEO:** per-page JSON-LD (Organization, LocalBusiness, WebSite,
   FAQPage, HowTo, Service, Article, Person, BreadcrumbList), canonical +
   OG metadata, generated `sitemap.xml` / `robots.txt`.
@@ -97,5 +97,5 @@ styles/
 
 Self-hosted in `public/` (downloaded from the WP CDN):
 `logo-color.png`, `logo-white.png` (dark nav / footer), `icon.png`
-(favicon + `app/icon.png`), `hero.gif` (WebGL fallback for the hero
-canvas).
+(favicon + `app/icon.png`). Decorative backgrounds are drawn entirely in
+Canvas/SVG (ParticleWave, WaveBackground, VoiceWave) — no image assets.

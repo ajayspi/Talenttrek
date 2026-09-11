@@ -153,8 +153,7 @@ export default async function HomePage() {
         <div className="container-site">
           <AnimatedSection>
             <div className="relative overflow-hidden rounded-3xl bg-deep px-8 py-16 text-center text-deep-text md:px-16">
-
-                            <h2 id="home-cta" className="relative text-3xl md:text-4xl">
+              <h2 id="home-cta" className="relative text-3xl md:text-4xl">
                 Book a <span className="text-deep-accent">Free Demo</span>
               </h2>
               <p className="relative mx-auto mt-4 max-w-xl text-deep-text">
