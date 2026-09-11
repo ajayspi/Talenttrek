@@ -1,12 +1,18 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
-import ParticleWave from "@/components/anim/ParticleWave";
+import HeroSkeleton from "@/components/home/HeroSkeleton";
 import WaveBackground from "@/components/anim/WaveBackground";
+
+const HeroCanvas = dynamic(() => import("@/components/home/HeroCanvas"), {
+  ssr: false,
+  loading: () => <HeroSkeleton />,
+});
 
 const ROTATING_WORDS = ["Modern Commerce", "Conversations", "Orders"];
 
@@ -33,7 +39,7 @@ export default function Hero() {
       className="relative overflow-hidden bg-gradient-to-b from-surface via-primary-dim/20 to-surface"
       aria-label="Introduction"
     >
-      <ParticleWave />
+      <HeroCanvas />
       <div className="container-site relative flex min-h-[86vh] flex-col items-center justify-center py-24 text-center md:min-h-[680px]">
         <motion.p
           className="eyebrow mb-5"
