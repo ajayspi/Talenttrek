@@ -1,4 +1,6 @@
-﻿import { useEffect } from "react";
+"use client";
+
+import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
@@ -84,7 +86,7 @@ export default function ServiceDetail({ service }: { service: Service }) {
       {/* GSAP Hero */}
       <HeroGsap name={service.name} tagline={service.tagline} short={service.short} />
 
-            {/* Problem */}
+      {/* Problem */}
       <section className="section">
         <div className="container-site">
           <div className="st-animate mx-auto max-w-3xl text-center">
@@ -127,10 +129,10 @@ export default function ServiceDetail({ service }: { service: Service }) {
         </div>
       </section>
 
-      {/* How it works â€” HowTo */}
+      {/* How it works — HowTo */}
       <section className="section">
         <div className="container-site">
-                    <SectionHeading
+          <SectionHeading
             eyebrow="How it works"
             title={`Getting ${service.name} live`}
             className="st-animate"
@@ -191,7 +193,7 @@ export default function ServiceDetail({ service }: { service: Service }) {
                 <span className="text-deep-accent">your</span> customer calls
               </h2>
               <p className="relative mx-auto mt-4 max-w-xl text-deep-text">
-                Book a free demo â€” we&apos;ll walk through your workflows and
+                Book a free demo — we&apos;ll walk through your workflows and
                 scope a pilot with measurable outcomes.
               </p>
               <div className="relative mt-8 flex flex-wrap justify-center gap-4">
