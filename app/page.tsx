@@ -4,6 +4,8 @@ import Hero from "@/components/home/Hero";
 import StatsCounter from "@/components/home/StatsCounter";
 import ServicesGrid from "@/components/home/ServicesGrid";
 import IndustriesStrip from "@/components/home/IndustriesStrip";
+import ProductShowcase from "@/components/home/ProductShowcase";
+import TermsMarquee from "@/components/home/TermsMarquee";
 import PartnersMarquee from "@/components/home/PartnersMarquee";
 import TestimonialsCarousel from "@/components/home/TestimonialsCarousel";
 import SectionHeading from "@/components/shared/SectionHeading";
@@ -63,6 +65,8 @@ export default async function HomePage() {
       <StatsCounter />
       <ServicesGrid />
       <IndustriesStrip />
+      <ProductShowcase />
+      <TermsMarquee />
       <PartnersMarquee />
 
       {/* How it works — 3-step HowTo */}

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { buildMetadata } from "@/lib/metadata";
 import StatsCounter from "@/components/home/StatsCounter";
+import StatsBand from "@/components/shared/StatsBand";
+import ProcessSteps from "@/components/shared/ProcessSteps";
 import SectionHeading from "@/components/shared/SectionHeading";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import FAQAccordion from "@/components/shared/FAQAccordion";
@@ -152,6 +155,62 @@ export default function AboutPage() {
         <WaveBackground />
       </section>
 
+      {/* Digital AI solutions — photo + animated stat bars */}
+      <section
+        className="relative overflow-hidden border-b border-line"
+        aria-labelledby="about-solutions"
+      >
+        <Image
+          src="/site/particle-face-glow.png"
+          alt=""
+          fill
+          sizes="100vw"
+          aria-hidden
+          className="pointer-events-none absolute inset-0 object-cover opacity-10"
+        />
+        <div className="container-site relative py-16 md:py-24">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <AnimatedSection className="relative">
+              <div className="group overflow-hidden rounded-3xl border border-line shadow-card">
+                <Image
+                  src="/site/about-hero.jpg"
+                  alt="The Talent Trek team collaborating on an AI deployment"
+                  width={1200}
+                  height={800}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="h-auto w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                />
+              </div>
+            </AnimatedSection>
+            <div>
+              <AnimatedSection>
+                <p className="eyebrow mb-3">AI solutions</p>
+                <h2 id="about-solutions" className="text-3xl md:text-4xl">
+                  Digital AI solutions with measurable outcomes
+                </h2>
+                <p className="mt-4 text-lg text-ink-muted">
+                  Every deployment ships with success metrics agreed up front —
+                  so &ldquo;it works&rdquo; means answered calls, booked
+                  appointments and revenue, not just a live demo.
+                </p>
+              </AnimatedSection>
+              <AnimatedSection className="mt-10">
+                <StatsBand
+                  name="Talent Trek delivery results"
+                  columnsClass="grid-cols-2"
+                  items={[
+                    { label: "Success project", value: 96, suffix: "%", percent: 96 },
+                    { label: "Services growth", value: 88, suffix: "%", percent: 88 },
+                    { label: "Customer rating", value: 98, suffix: "%", percent: 98 },
+                    { label: "Happy clients", value: 92, suffix: "%", percent: 92 },
+                  ]}
+                />
+              </AnimatedSection>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Story + timeline */}
       <section className="section">
         <div className="container-site grid items-start gap-12 md:grid-cols-[1fr_1.4fr]">
@@ -165,6 +224,16 @@ export default function AboutPage() {
               business actually gets done — and too many calls still go
               unanswered, unbooked and unpaid.
             </p>
+            <div className="group mt-8 overflow-hidden rounded-2xl border border-line shadow-card">
+              <Image
+                src="/site/about-feature.png"
+                alt="Illustration of AI and people working together at Talent Trek"
+                width={500}
+                height={500}
+                sizes="(min-width: 768px) 40vw, 100vw"
+                className="h-auto w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+              />
+            </div>
           </AnimatedSection>
           <ol className="relative space-y-8 border-l-2 border-line pl-8">
             {TIMELINE.map((t) => (
@@ -225,6 +294,37 @@ export default function AboutPage() {
               </AnimatedSection>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Work process */}
+      <section className="section" aria-labelledby="about-process">
+        <div className="container-site">
+          <SectionHeading
+            eyebrow="Work process"
+            title="Discover our digital solutions"
+            lede="A proven four-step path from first conversation to a live, measured deployment."
+          />
+          <ProcessSteps
+            steps={[
+              {
+                title: "Built around your business",
+                body: "From spa treatments to tasting sessions, Talent Trek adapts to your booking style and service structure.",
+              },
+              {
+                title: "Seamless client experience",
+                body: "Clients book in minutes, get reminders and receive follow-ups — all without calling your front desk.",
+              },
+              {
+                title: "Smart insights",
+                body: "Track your busiest times, top services and client trends to optimise operations and marketing.",
+              },
+              {
+                title: "All-in-one platform",
+                body: "Connected with your POS, CRM and staff tools for a complete operational ecosystem.",
+              },
+            ]}
+          />
         </div>
       </section>
 

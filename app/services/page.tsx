@@ -1,9 +1,12 @@
 ﻿import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { SERVICES } from "@/lib/services";
 import { INDUSTRIES } from "@/lib/industries";
 import { buildMetadata } from "@/lib/metadata";
 import ServiceCard from "@/components/shared/ServiceCard";
+import StatsBand from "@/components/shared/StatsBand";
+import ProcessSteps from "@/components/shared/ProcessSteps";
 import ParticleWave from "@/components/anim/ParticleWave";
 import WaveBackground from "@/components/anim/WaveBackground";
 import AnimatedSection from "@/components/shared/AnimatedSection";
@@ -146,6 +149,24 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Stats band — mirrors WP "Winning Awards / Years Experience / Product Delivery" */}
+      <section
+        aria-label="Talent Trek track record"
+        className="section-alt border-y border-line"
+      >
+        <div className="container-site py-14">
+          <StatsBand
+            name="Talent Trek track record"
+            items={[
+              { label: "Awards & recognition", value: 12, suffix: "+" },
+              { label: "Years experience", value: 8, suffix: "+" },
+              { label: "Live deployments", value: 500, suffix: "+" },
+              { label: "Calls handled monthly", value: 250, suffix: "k+" },
+            ]}
+          />
+        </div>
+      </section>
+
       {/* Comparison table â€” services Ã— industries */}
       <section className="section section-alt border-t border-line" aria-labelledby="comparison">
         <div className="container-site">
@@ -197,6 +218,82 @@ export default function ServicesPage() {
               </tbody>
             </table>
           </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Integrations strip — WP partner icons */}
+      <section
+        aria-label="Platforms we integrate with"
+        className="section-alt border-t border-line"
+      >
+        <div className="container-site py-12">
+          <AnimatedSection className="mb-8 text-center">
+            <p className="eyebrow mb-2">Integrations</p>
+            <h2 className="text-2xl md:text-3xl">
+              Plugged into the platforms you already run
+            </h2>
+          </AnimatedSection>
+          <ul className="flex flex-wrap items-center justify-center gap-4">
+            {[
+              { src: "/site/partner-icon1.png", label: "POS platforms" },
+              { src: "/site/partner-icon2.png", label: "Telephony & voice" },
+              { src: "/site/partner-icon3.png", label: "Calendars & booking" },
+              { src: "/site/partner-icon4.png", label: "Payment gateways" },
+              { src: "/site/partner-icon5.png", label: "CRMs & helpdesks" },
+            ].map((p) => (
+              <li key={p.src}>
+                <AnimatedSection className="group flex items-center gap-3 rounded-2xl border border-line bg-surface px-5 py-3 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-accent">
+                  <Image
+                    src={p.src}
+                    alt=""
+                    width={40}
+                    height={40}
+                    sizes="40px"
+                    aria-hidden
+                    className="h-10 w-10 object-contain transition-transform duration-300 group-hover:scale-110"
+                  />
+                  <span className="text-sm font-bold">{p.label}</span>
+                </AnimatedSection>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Work process */}
+      <section className="section" aria-labelledby="services-process">
+        <div className="container-site">
+          <AnimatedSection className="mb-10 max-w-2xl">
+            <p className="eyebrow mb-3">How we deliver</p>
+            <h2 id="services-process" className="text-3xl md:text-4xl">
+              From first call to live AI in four steps
+            </h2>
+            <p className="mt-4 text-ink-muted">
+              The same transparent process behind every service above — you
+              approve scripts, intents and success metrics before anything
+              goes live.
+            </p>
+          </AnimatedSection>
+          <ProcessSteps
+            steps={[
+              {
+                title: "Discussion",
+                body: "We map your call flows, menus, FAQs and pain points, then agree the outcomes that matter.",
+              },
+              {
+                title: "Ideas & concepts",
+                body: "Conversation designs, integrations and success metrics are drafted for your approval.",
+              },
+              {
+                title: "Testing & trying",
+                body: "You trial the assistant on real scenarios in a safe sandbox before any customer hears it.",
+              },
+              {
+                title: "Execute & install",
+                body: "We go live on your channels with monitoring, tuning and human hand-off from day one.",
+              },
+            ]}
+          />
         </div>
       </section>
     </>
