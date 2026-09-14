@@ -5,7 +5,8 @@ import { ChevronDown } from "lucide-react";
 
 export interface FaqItem {
   q: string;
-  a: string;
+  a?: string;
+  body?: string;
 }
 
 /**
@@ -58,7 +59,7 @@ export default function FAQAccordion({
               className="faq-panel"
             >
               <div>
-                <p className="px-6 pb-5 text-ink-muted">{item.a}</p>
+                <p className="px-6 pb-5 text-ink-muted">{item.a ?? item.body}</p>
               </div>
             </div>
           </div>

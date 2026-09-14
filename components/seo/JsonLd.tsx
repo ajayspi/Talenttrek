@@ -90,7 +90,7 @@ export function websiteLd(): Record<string, unknown> {
 }
 
 export function faqPageLd(
-  faqs: { q: string; a: string }[],
+  faqs: { q: string; a?: string; body?: string }[],
 ): Record<string, unknown> {
   return {
     "@context": "https://schema.org",
@@ -98,7 +98,7 @@ export function faqPageLd(
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
       name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
+      acceptedAnswer: { "@type": "Answer", text: f.a ?? f.body ?? "" },
     })),
   };
 }
