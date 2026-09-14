@@ -8,8 +8,11 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   Bot,
+  CalendarDays,
   Car,
   ChevronDown,
+  Database,
+  Globe,
   HeartPulse,
   Menu,
   MessageSquare,
@@ -18,6 +21,7 @@ import {
   Phone,
   ShoppingBag,
   Soup,
+  Square,
   UtensilsCrossed,
   X,
 } from "lucide-react";
@@ -27,7 +31,18 @@ import { SITE } from "@/lib/site";
 import { trackEvent } from "@/lib/analytics";
 import DarkModeToggle from "./DarkModeToggle";
 
-const SERVICE_ICONS = { mic: Mic, chat: MessageSquare, drive: Car, agent: Bot };
+const SERVICE_ICONS = {
+  mic: Mic,
+  chat: MessageSquare,
+  drive: Car,
+  agent: Bot,
+  square: Square,
+  crm: MessageSquare,
+  database: Database,
+  phone: Phone,
+  calendar: CalendarDays,
+  globe: Globe,
+};
 const INDUSTRY_ICONS: Record<string, typeof Car> = {
   "hospitality-wellness": UtensilsCrossed,
   automotive: Car,
