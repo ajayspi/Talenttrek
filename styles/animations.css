@@ -244,6 +244,115 @@
     var(--surface);
 }
 
+/* ============================================================
+   Hero icon scenes — the animated icon constellation used by every
+   service & industry hero. A brand-accent core icon, expanding halo
+   rings, GSAP-rotated dashed orbits, floating satellite icon chips
+   and an equalizer base. Sub-elements that GSAP also animates are
+   split into outer (GSAP) / inner (CSS) nodes so the two motion
+   systems never fight over the same transform.
+   ============================================================ */
+.hero-scene {
+  background:
+    radial-gradient(120% 120% at 15% 0%, rgba(37, 99, 235, 0.18), transparent 58%),
+    radial-gradient(120% 120% at 90% 100%, rgba(249, 115, 22, 0.16), transparent 58%),
+    var(--bg-alt);
+}
+[data-theme="dark"] .hero-scene {
+  background:
+    radial-gradient(120% 120% at 15% 0%, rgba(96, 165, 250, 0.18), transparent 58%),
+    radial-gradient(120% 120% at 90% 100%, rgba(251, 146, 60, 0.16), transparent 58%),
+    var(--surface);
+}
+
+/* Faint technical grid behind the constellation. */
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(15, 23, 42, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.07) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(75% 75% at 50% 45%, #000 30%, transparent 100%);
+  mask-image: radial-gradient(75% 75% at 50% 45%, #000 30%, transparent 100%);
+}
+[data-theme="dark"] .hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(226, 232, 240, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 232, 240, 0.09) 1px, transparent 1px);
+}
+
+/* Brand-accent core icon chip. */
+.hero-core {
+  color: var(--accent-logo);
+  background: rgba(249, 115, 22, 0.14);
+  box-shadow: 0 22px 45px -22px rgba(249, 115, 22, 0.65);
+}
+[data-theme="dark"] .hero-core {
+  background: rgba(251, 146, 60, 0.16);
+}
+.hero-core-inner {
+  animation: chip-float 4.6s ease-in-out infinite;
+}
+
+/* Expanding halo rings behind the core. */
+@keyframes hero-halo {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.55;
+  }
+  70% {
+    opacity: 0.08;
+  }
+  100% {
+    transform: scale(2.15);
+    opacity: 0;
+  }
+}
+.hero-halo {
+  border: 1.5px solid var(--accent-logo);
+  animation: hero-halo 3.8s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
+}
+
+/* Satellite icon chips (GSAP pops .hero-chip in, CSS floats the inner). */
+@keyframes chip-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+.hero-chip-inner {
+  animation: chip-float 4.2s ease-in-out infinite;
+}
+
+/* Twinkling accent sparks. */
+@keyframes hero-spark {
+  0%,
+  100% {
+    opacity: 0.18;
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.15);
+  }
+}
+.hero-spark {
+  background: var(--accent-logo);
+  border-radius: 9999px;
+  animation: hero-spark 3s ease-in-out infinite;
+}
+
+/* Animated icon rail in the hero text column (left side). */
+.icon-chip-inner {
+  animation: chip-float 3.6s ease-in-out infinite;
+}
+.icon-rail-dot {
+  background: var(--accent-logo);
+  animation: hero-spark 2.2s ease-in-out infinite;
+}
+
 /* ---------- deep surfaces: headings must stay light on navy ----------
    The base h2/h3 rule sets color: var(--text) (near-black in light theme),
    which overrides inheritance and made CTA-band headlines invisible in
@@ -270,6 +379,12 @@
   .glyph-orbit,
   .feat-icon,
   .voice-wave-bar,
+  .hero-core-inner,
+  .hero-halo,
+  .hero-chip-inner,
+  .hero-spark,
+  .icon-chip-inner,
+  .icon-rail-dot,
   .animate-bounce,
   .animate-ping,
   .animate-pulse,

@@ -119,9 +119,27 @@ export const INDUSTRIES: Industry[] = [
       "One assistant answering consistently on every channel",
     ],
     services: ["Voice Commerce", "AI Agent"],
-    image: null,
-    imageAlt: "",
-    features: [],
+    // Reused from the scraped WP media library — the kiosk/commerce shots show
+    // exactly the in-store and phone-order workflows this page sells.
+    image: "/industries/restaurants/kiosks.png",
+    imageAlt: "An in-store kiosk taking orders, representing self-service retail AI",
+    features: [
+      {
+        title: "Self-Service Product Answers",
+        body: "Stock levels, shipping windows and returns policy answered instantly on web, chat and phone.",
+        image: "/industries/it/multichannel.png",
+      },
+      {
+        title: "Voice Commerce Checkout",
+        body: "Customers order by simply saying it, with payment captured inside the same conversation.",
+        image: "/industries/automotive/commerce.png",
+      },
+      {
+        title: "Peak-Ready Support",
+        body: "Sale days and click-and-collect rushes handled without pulling staff off the floor.",
+        image: "/industries/restaurants/peak-orders.png",
+      },
+    ],
   },
   {
     slug: "food-beverage",

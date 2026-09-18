@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import type { Service, ServiceIcon } from "@/lib/services";
 import { SITE } from "@/lib/site";
+import { serviceShots } from "@/lib/serviceImages";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import SectionHeading from "@/components/shared/SectionHeading";
 import FAQAccordion from "@/components/shared/FAQAccordion";
@@ -84,7 +85,12 @@ export default function ServiceDetail({ service }: { service: Service }) {
       <PageEventTracker event="service_view" label={service.name} />
 
       {/* GSAP Hero */}
-      <HeroGsap name={service.name} tagline={service.tagline} short={service.short} />
+      <HeroGsap
+        name={service.name}
+        icon={service.icon}
+        tagline={service.tagline}
+        short={service.short}
+      />
 
       {/* Problem */}
       <section className="section">
@@ -150,6 +156,35 @@ export default function ServiceDetail({ service }: { service: Service }) {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      {/* In the wild — real photography reused from the WP media library */}
+      <section className="section">
+        <div className="container-site">
+          <SectionHeading
+            eyebrow="In the wild"
+            title={`${service.name} in action`}
+            className="st-animate"
+          />
+          <div className="st-animate grid gap-5 md:grid-cols-3">
+            {serviceShots(service.slug).map((shot) => (
+              <figure key={shot.src} className="card group overflow-hidden">
+                <div className="aspect-[16/10] overflow-hidden border-b border-line">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={shot.src}
+                    alt={`${service.name} — ${shot.caption}`}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                </div>
+                <figcaption className="p-5 text-sm font-semibold text-ink-muted">
+                  {shot.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 

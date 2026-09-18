@@ -62,7 +62,12 @@ export default function IndustriesStrip() {
             href={`/industries/${ind.slug}`}
             className="card card-hover group w-[300px] flex-none snap-start overflow-hidden md:w-[340px]"
           >
-            <IndustryVisual slug={ind.slug} name={ind.name} />
+            <IndustryVisual
+              slug={ind.slug}
+              name={ind.name}
+              image={ind.image}
+              imageAlt={ind.imageAlt}
+            />
             <div className="p-5">
               <h3 className="text-lg">{ind.name}</h3>
               <p className="mt-1.5 text-sm text-ink-muted">{ind.tagline}</p>

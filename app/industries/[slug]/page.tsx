@@ -6,7 +6,8 @@ import { SERVICES } from "@/lib/services";
 import { buildMetadata } from "@/lib/metadata";
 import ParticleWave from "@/components/anim/ParticleWave";
 import WaveBackground from "@/components/anim/WaveBackground";
-import IndustryVisual from "@/components/anim/IndustryVisual";
+import HeroIconScene from "@/components/anim/HeroIconScene";
+import AnimatedIconRow from "@/components/anim/AnimatedIconRow";
 import MetricsRow from "@/components/industries/MetricsRow";
 import PolyGraph from "@/components/industries/PolyGraph";
 import SectionHeading from "@/components/shared/SectionHeading";
@@ -95,7 +96,7 @@ export default async function IndustryPage({
             <span aria-hidden> / </span>
             <span aria-current="page">{industry.name}</span>
           </nav>
-                    <p className="eyebrow mb-3">{industry.tagline}</p>
+          <p className="eyebrow mb-3">{industry.tagline}</p>
           <div className="grid items-center gap-10 md:grid-cols-2">
             <div>
               <h1 className="max-w-2xl text-4xl md:text-5xl">
@@ -105,6 +106,12 @@ export default async function IndustryPage({
                 </span>
               </h1>
               <p className="mt-5 max-w-lg text-lg text-ink-muted">{extras?.summary ?? industry.tagline}</p>
+              <AnimatedIconRow
+                kind="industry"
+                id={industry.slug}
+                caption={`Built for ${industry.name}`}
+                className="mt-7"
+              />
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link href="/contact" className="btn btn-primary">
                   Book a Free Demo <ArrowRight className="arrow h-4 w-4" aria-hidden />
@@ -114,8 +121,14 @@ export default async function IndustryPage({
                 </Link>
               </div>
             </div>
-            <div className="justify-self-center">
-              <IndustryVisual slug={industry.slug} name={industry.name} />
+            <div className="w-full justify-self-center">
+              <HeroIconScene
+                kind="industry"
+                id={industry.slug}
+                label={industry.name}
+                image={industry.image}
+                imageAlt={industry.imageAlt}
+              />
             </div>
           </div>
         </div>

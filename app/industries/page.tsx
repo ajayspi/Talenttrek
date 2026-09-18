@@ -4,6 +4,8 @@ import { buildMetadata } from "@/lib/metadata";
 import IndustryCard from "@/components/industries/IndustryCard";
 import ParticleWave from "@/components/anim/ParticleWave";
 import WaveBackground from "@/components/anim/WaveBackground";
+import AnimatedIconRow from "@/components/anim/AnimatedIconRow";
+import HeroIconScene from "@/components/anim/HeroIconScene";
 import SectionHeading from "@/components/shared/SectionHeading";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import FAQAccordion from "@/components/shared/FAQAccordion";
@@ -68,26 +70,39 @@ export default function IndustriesPage() {
           aria-hidden
         />
         <ParticleWave />
-        <div className="container-site relative py-16 md:py-24">
-          <nav aria-label="Breadcrumb" className="mb-5 text-sm text-ink-muted">
-            <a href="/" className="hover:text-accent">
-              Home
-            </a>
-            <span aria-hidden> / </span>
-            <span aria-current="page">Industries</span>
-          </nav>
-          <p className="eyebrow mb-3">Industries</p>
-          <h1 className="max-w-3xl text-4xl md:text-5xl">
-            AI solutions shaped to{" "}
-            <span className="grad-text">
-              your industry
-            </span>
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg text-ink-muted">
-            The same engine, configured for the calls, menus, compliance and
-            peaks your sector is known for. Expand an industry to see the
-            pain points we hear most — and how we solve them.
-          </p>
+        <div className="container-site relative grid items-center gap-10 py-16 md:grid-cols-2 md:py-24">
+          <div>
+            <nav aria-label="Breadcrumb" className="mb-5 text-sm text-ink-muted">
+              <a href="/" className="hover:text-accent">
+                Home
+              </a>
+              <span aria-hidden> / </span>
+              <span aria-current="page">Industries</span>
+            </nav>
+            <p className="eyebrow mb-3">Industries</p>
+            <h1 className="max-w-3xl text-4xl md:text-5xl">
+              AI solutions shaped to{" "}
+              <span className="grad-text">
+                your industry
+              </span>
+            </h1>
+            <p className="mt-5 max-w-2xl text-lg text-ink-muted">
+              The same engine, configured for the calls, menus, compliance and
+              peaks your sector is known for. Expand an industry to see the
+              pain points we hear most — and how we solve them.
+            </p>
+            <AnimatedIconRow
+              kind="industry"
+              id="index"
+              caption="Six industries, one platform"
+              className="mt-7"
+            />
+          </div>
+          <HeroIconScene
+            kind="industry"
+            id="index"
+            label="Tuned to your sector"
+          />
         </div>
         <WaveBackground />
       </section>

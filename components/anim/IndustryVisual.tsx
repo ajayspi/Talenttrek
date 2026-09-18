@@ -34,28 +34,34 @@ const INDUSTRY_HERO_ALTS: Record<string, string> = {
 };
 
 /**
- * Animated industry visual — replaces placeholder photography on industry
- * cards and pages. When a slug has real photography it renders a branded
- * rounded-frame photo with a gradient overlay and the industry name. Falls
- * back to the icon + voice-wave token for industries without imagery
- * (retail, healthcare).
+ * Animated industry visual — the industry's own photography inside a branded
+ * rounded frame with a gradient overlay and the industry name. The image comes
+ * from `Industry.image` so every page/card shares one source of truth; the
+ * `INDUSTRY_HERO_IMAGES` map stays as a fallback for callers that only pass a
+ * slug. Industries without imagery (e.g. healthcare) get the animated icon +
+ * voice-wave token instead, so nothing ever renders blank.
  */
 export default function IndustryVisual({
   slug,
   name,
+  image,
+  imageAlt,
 }: {
   slug: string;
   name: string;
+  /** Industry.image from lib/industries.ts. Falls back to the slug map. */
+  image?: string | null;
+  imageAlt?: string;
 }) {
-  const hero = INDUSTRY_HERO_IMAGES[slug];
-  const alt = INDUSTRY_HERO_ALTS[slug] ?? "";
+  const src = image ?? INDUSTRY_HERO_IMAGES[slug] ?? null;
+  const alt = imageAlt || INDUSTRY_HERO_ALTS[slug] || `${name} industry`;
   const Icon = INDUSTRY_ICONS[slug];
 
-  if (hero) {
+  if (src) {
     return (
       <div className="service-visual group relative aspect-[16/10] w-full overflow-hidden border border-line">
         <img
-          src={hero}
+          src={src}
           alt={alt}
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
@@ -72,16 +78,30 @@ export default function IndustryVisual({
   }
 
   return (
-    <div className="service-visual relative flex aspect-[16/10] w-full flex-col items-center justify-center gap-5 overflow-hidden border border-line p-6">
+    <div className="hero-scene service-visual relative flex aspect-[16/10] w-full flex-col items-center justify-center gap-4 overflow-hidden border border-line p-6">
+      <span
+        className="hero-spark absolute left-[18%] top-[26%] h-1.5 w-1.5"
+        aria-hidden
+      />
+      <span
+        className="hero-spark absolute right-[16%] top-[22%] h-2 w-2"
+        style={{ animationDelay: "0.9s" }}
+        aria-hidden
+      />
+      <span
+        className="hero-spark absolute bottom-[24%] left-[26%] h-1.5 w-1.5"
+        style={{ animationDelay: "1.6s" }}
+        aria-hidden
+      />
       {Icon && (
-        <span
-          className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-accent-dim"
-          aria-hidden
-        >
-          <Icon className="h-8 w-8 text-accent" />
+        <span className="hero-core inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-line" aria-hidden>
+          <span className="hero-chip-inner inline-flex">
+            <Icon className="h-8 w-8" strokeWidth={1.7} />
+          </span>
         </span>
       )}
       <span className="text-sm font-bold text-ink-muted">{name}</span>
+      <VoiceWave bars={9} className="h-7 w-24" />
     </div>
   );
 }

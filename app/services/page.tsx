@@ -9,6 +9,8 @@ import StatsBand from "@/components/shared/StatsBand";
 import ProcessSteps from "@/components/shared/ProcessSteps";
 import ParticleWave from "@/components/anim/ParticleWave";
 import WaveBackground from "@/components/anim/WaveBackground";
+import HeroIconScene from "@/components/anim/HeroIconScene";
+import AnimatedIconRow from "@/components/anim/AnimatedIconRow";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import { JsonLd, serviceLd } from "@/components/seo/JsonLd";
 import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
@@ -16,7 +18,7 @@ import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 export const metadata: Metadata = buildMetadata({
   title: "Services",
   description:
-    "Voice Commerce, Chat AI Automotive, Dynamic DriveThru, AI Agent, Square Integration, Custom CRM, CRM Management, AI Phone Receptionist, AI Appointment Booking and Multilingual AI Assistant â€” deployable standalone or as one connected experience.",
+    "Voice Commerce, Chat AI Automotive, Dynamic DriveThru, AI Agent, Square Integration, Custom CRM, CRM Management, AI Phone Receptionist, AI Appointment Booking and Multilingual AI Assistant — deployable standalone or as one connected experience.",
   path: "/services",
 });
 
@@ -80,7 +82,7 @@ function FitCell({ level }: { level: 0 | 1 | 2 }) {
   return (
     <>
       <span className="mx-auto block text-ink-muted" aria-hidden>
-        â€“
+        –
       </span>
       <span className="sr-only">Not applicable</span>
     </>
@@ -131,11 +133,21 @@ export default function ServicesPage() {
             </h1>
             <p className="mt-5 max-w-lg text-lg text-ink-muted">
               Every service below is deployable standalone or as part of one
-              connected experience â€” pick the workflow that hurts most and
+              connected experience — pick the workflow that hurts most and
               start there.
             </p>
+            <AnimatedIconRow
+              kind="service"
+              id="index"
+              caption="Ten services, one connected brain"
+              className="mt-7"
+            />
           </div>
-          <AbstractIllustration />
+          <HeroIconScene
+            kind="service"
+            id="index"
+            label="One connected AI platform"
+          />
         </div>
         <WaveBackground />
       </section>
@@ -167,7 +179,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Comparison table â€” services Ã— industries */}
+      {/* Comparison table — services × industries */}
       <section className="section section-alt border-t border-line" aria-labelledby="comparison">
         <div className="container-site">
           <AnimatedSection className="mb-10 max-w-2xl">
@@ -177,14 +189,14 @@ export default function ServicesPage() {
             </h2>
             <p className="mt-4 text-ink-muted">
               A quick matrix of where each service is a core fit versus a
-              strong supporting player. Every combination is configurable â€”
+              strong supporting player. Every combination is configurable —
               this is where they earn their keep fastest.
             </p>
           </AnimatedSection>
           <AnimatedSection className="card overflow-x-auto">
             <table className="w-full min-w-[640px] text-left text-sm">
               <caption className="sr-only">
-                Fit of each Talent Trek service to each industry â€” filled
+                Fit of each Talent Trek service to each industry — filled
                 circle means core fit, outlined circle means supported
               </caption>
               <thead>
@@ -297,42 +309,6 @@ export default function ServicesPage() {
         </div>
       </section>
     </>
-  );
-}
-
-/** Undraw-style abstract AI illustration (inline SVG, theme-aware). */
-function AbstractIllustration() {
-  return (
-    <svg
-      viewBox="0 0 520 380"
-      className="w-full"
-      role="img"
-      aria-label="Abstract illustration of AI connecting conversations"
-    >
-      <defs>
-        <linearGradient id="tt-svc-grad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="var(--primary)" stopOpacity="0.9" />
-          <stop offset="100%" stopColor="var(--accent)" stopOpacity="0.9" />
-        </linearGradient>
-      </defs>
-      <circle cx="260" cy="180" r="120" fill="url(#tt-svc-grad)" opacity="0.12" />
-      <circle cx="260" cy="180" r="80" fill="url(#tt-svc-grad)" opacity="0.16" />
-      <g stroke="var(--primary)" strokeWidth="1.5" opacity="0.5" fill="none">
-        <path d="M260 100 L150 60 M260 100 L390 70 M260 260 L130 300 M260 260 L400 290 M260 100 L260 260" />
-      </g>
-      <g fill="var(--surface)" stroke="var(--accent)" strokeWidth="2">
-        <circle cx="150" cy="60" r="14" />
-        <circle cx="390" cy="70" r="14" />
-        <circle cx="130" cy="300" r="14" />
-        <circle cx="400" cy="290" r="14" />
-      </g>
-      <circle cx="260" cy="180" r="42" fill="url(#tt-svc-grad)" />
-      <g stroke="#fff" strokeWidth="3" strokeLinecap="round" fill="none">
-        <path d="M244 180 q8 -14 16 0 q8 14 16 0" />
-        <path d="M240 164 q20 -22 40 0" opacity="0.7" />
-        <path d="M240 196 q20 22 40 0" opacity="0.7" />
-      </g>
-    </svg>
   );
 }
 

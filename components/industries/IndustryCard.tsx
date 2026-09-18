@@ -47,7 +47,12 @@ export default function IndustryCard({ industry }: { industry: Industry }) {
       <div id={panelId} className="faq-panel" data-open={open}>
         <div>
           <div className="grid gap-6 border-t border-line p-6 md:grid-cols-2">
-            <IndustryVisual slug={industry.slug} name={industry.name} />
+            <IndustryVisual
+              slug={industry.slug}
+              name={industry.name}
+              image={industry.image}
+              imageAlt={industry.imageAlt}
+            />
             <div>
               <h4 className="mb-2 text-sm font-bold uppercase tracking-wide text-accent">
                 The pain
