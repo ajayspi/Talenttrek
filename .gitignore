@@ -47,3 +47,6 @@ Thumbs.db
 # dump/write scripts
 dump-scroll.js
 write-scroll.js
+
+# Captured leads (never commit PII)
+/data/

@@ -30,8 +30,7 @@ export const SITE = {
   mapEmbedUrl:
     "https://www.google.com/maps?q=312/86+Overton+Rd,+Williams+Landing+VIC+3027&output=embed",
   socials: {
-    linkedin: "https://www.linkedin.com/",
-    x: "https://x.com/",
+    linkedin: "https://au.linkedin.com/company/talent-trek",
   },
   logos: {
     color: "/logo-color.png",

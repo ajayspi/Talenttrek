@@ -45,7 +45,7 @@ export function organizationLd(): Record<string, unknown> {
       contactType: "sales",
       availableLanguage: "en-AU",
     },
-    sameAs: [SITE.socials.linkedin, SITE.socials.x],
+    sameAs: [SITE.socials.linkedin],
   };
 }
 

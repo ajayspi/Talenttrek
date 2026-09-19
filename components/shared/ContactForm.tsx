@@ -30,8 +30,6 @@ interface FieldErrors {
   form?: string;
 }
 
-const CF7_ID = process.env.NEXT_PUBLIC_CF7_FORM_ID;
-
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<FieldErrors>({});
@@ -57,7 +55,6 @@ export default function ContactForm() {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
-    data.set("services", services.join(" | "));
     const fieldErrors = validate(data);
     if (Object.keys(fieldErrors).length > 0) {
       setErrors(fieldErrors);
@@ -67,48 +64,36 @@ export default function ContactForm() {
     setErrors({});
     setStatus("submitting");
     try {
-      if (CF7_ID) {
-        const cf7 = new FormData();
-        cf7.set("_wpcf7_unit_tag", `tt-${Date.now()}`);
-        for (const [k, v] of data.entries()) cf7.set(k, v);
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_WP_URL}/wp-json/contact-form-7/v1/contact-forms/${CF7_ID}/feedback`,
-          { method: "POST", body: cf7 },
-        );
-        const json = (await res.json()) as {
-          status?: string;
-          message?: string;
-          invalid_fields?: { into?: string; message?: string }[];
-        };
-        if (json.status === "mail_sent") {
-          trackEvent("form_submit", { method: "cf7" });
-          setStatus("success");
-          return;
-        }
-        if (json.status === "validation_failed") {
-          const next: FieldErrors = {};
-          for (const f of json.invalid_fields ?? []) {
-            const into = f.into ?? "";
-            const key = /your-email/.test(into)
-              ? "email"
-              : /your-name/.test(into)
-                ? "fullName"
-                : /your-message/.test(into)
-                  ? "message"
-                  : undefined;
-            if (key) next[key] = f.message;
-          }
-          setErrors(next);
-          setStatus("error");
-          return;
-        }
-        throw new Error(json.message ?? "CF7 error");
-      } else {
-        // Demo mode: no CF7 form ID configured yet — validate + show success.
-        await new Promise((r) => setTimeout(r, 700));
-        trackEvent("form_submit", { method: "demo" });
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: String(data.get("fullName") ?? ""),
+          email: String(data.get("email") ?? ""),
+          phone: String(data.get("phone") ?? ""),
+          industry: String(data.get("industry") ?? ""),
+          services,
+          message: String(data.get("message") ?? ""),
+          website: String(data.get("website") ?? ""),
+        }),
+      });
+      if (res.ok) {
+        trackEvent("form_submit", { method: "api" });
         setStatus("success");
+        return;
       }
+      const json = (await res.json().catch(() => ({}))) as {
+        error?: string;
+        errors?: Record<string, string>;
+      };
+      if (json.errors) setErrors(json.errors);
+      setErrors((prev) => ({
+        ...prev,
+        form:
+          json.error ??
+          "Something went wrong sending your message. Please call us on 1800 860 624.",
+      }));
+      setStatus("error");
     } catch {
       setErrors({
         form: "Something went wrong sending your message. Please call us on 1800 860 624.",
@@ -144,6 +129,17 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} noValidate className="card p-7 md:p-8">
+        {/* Honeypot — hidden from humans, catches bots. Server ignores + discards. */}
+        <div className="hidden" aria-hidden="true">
+          <label htmlFor="cf-website">Website</label>
+          <input
+            id="cf-website"
+            name="website"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
       <div className="grid gap-5 md:grid-cols-2">
         <div>
           <label htmlFor="cf-name" className="field-label">

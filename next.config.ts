@@ -19,6 +19,7 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   eslint: { ignoreDuringBuilds: true },
+  poweredByHeader: false,
   images: {
     remotePatterns: [{ protocol: "https", hostname: "talenttrek.com.au" }],
   },

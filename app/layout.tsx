@@ -38,7 +38,7 @@ export const viewport: Viewport = {
   themeColor: [
     // Light-first default; dark only after the user opts in via the toggle.
     { media: "(prefers-color-scheme: light)", color: "#F8FAFC" },
-    { media: "(prefers-color-scheme: dark)", color: "#F8FAFC" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B1324" },
   ],
 };
 

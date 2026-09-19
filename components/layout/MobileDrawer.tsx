@@ -289,6 +289,9 @@ export default function MobileDrawer({
             <div className="flex flex-none flex-col gap-3 border-t border-line px-5 py-5">
               <a
                 href={SITE.phone.href}
+                onClick={() =>
+                  trackEvent("cta_click", { location: "drawer-phone", medium: "tel" })
+                }
                 className="flex items-center gap-2.5 rounded-xl border border-line bg-surface px-4 py-3 font-bold text-ink"
               >
                 <Phone className="h-4 w-4 text-accent" aria-hidden />

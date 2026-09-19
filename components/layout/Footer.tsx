@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Linkedin, MapPin, Twitter } from "lucide-react";
+import { Linkedin, MapPin } from "lucide-react";
 import { SITE } from "@/lib/site";
 
 const COMPANY_LINKS = [
@@ -62,15 +62,6 @@ export default function Footer() {
               aria-label="Talent Trek on LinkedIn"
             >
               <Linkedin className="h-4 w-4" aria-hidden />
-            </Link>
-            <Link
-              href="https://x.com"
-              target="_blank"
-              rel="noreferrer"
-              className="icon-btn border-deep-border text-deep-accent hover:border-deep-accent hover:bg-deep-accent hover:text-deep"
-              aria-label="Talent Trek on X"
-            >
-              <Twitter className="h-4 w-4" aria-hidden />
             </Link>
           </div>
         </div>

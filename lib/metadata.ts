@@ -5,7 +5,7 @@ interface BuildMetadataOptions {
   title: string;
   description: string;
   path: string;
-  /** Defaults to the brand OG image hosted on the WordPress CDN. */
+  /** Defaults to the branded OG image served from this site. */
   image?: string;
 }
 
@@ -17,9 +17,8 @@ export function buildMetadata({
   image,
 }: BuildMetadataOptions): Metadata {
   const url = `${SITE.url}${path}`;
-  const ogImage =
-    image ??
-    "https://talenttrek.com.au/wp-content/uploads/2025/07/Gemini_Generated_Image_yhavzmyhavzmyhav-scaled-e1751807159510-1024x505.png";
+  // Self-hosted so share previews survive the WordPress retirement.
+  const ogImage = image ?? "/og-default.png";
   return {
     title,
     description,
@@ -31,7 +30,7 @@ export function buildMetadata({
       siteName: SITE.name,
       locale: "en_AU",
       type: "website",
-      images: [{ url: ogImage, width: 1024, height: 505, alt: SITE.name }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: SITE.name }],
     },
     twitter: {
       card: "summary_large_image",

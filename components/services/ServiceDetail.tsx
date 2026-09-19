@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import type { Service, ServiceIcon } from "@/lib/services";
 import { SITE } from "@/lib/site";
+import { trackEvent } from "@/lib/analytics";
 import { serviceShots } from "@/lib/serviceImages";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import SectionHeading from "@/components/shared/SectionHeading";
@@ -235,7 +236,13 @@ export default function ServiceDetail({ service }: { service: Service }) {
                 <Link href="/contact" className="btn btn-primary-deep">
                   Book a demo <ArrowRight className="arrow h-4 w-4" aria-hidden />
                 </Link>
-                <a href={SITE.phone.href} className="btn btn-ghost-deep">
+                <a
+                  href={SITE.phone.href}
+                  onClick={() =>
+                    trackEvent("cta_click", { location: "service-cta", medium: "tel" })
+                  }
+                  className="btn btn-ghost-deep"
+                >
                   <Phone className="h-4 w-4" aria-hidden /> {SITE.phone.display}
                 </a>
               </div>

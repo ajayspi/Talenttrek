@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { SITE } from "@/lib/site";
+import { trackEvent } from "@/lib/analytics";
 import type { ServiceIcon } from "@/lib/services";
 import AnimatedIconRow from "@/components/anim/AnimatedIconRow";
 import HeroIconScene from "@/components/anim/HeroIconScene";
@@ -61,9 +62,15 @@ export default function HeroGsap({ name, icon, tagline, short }: HeroGsapProps) 
             <a href="/contact" className="gsap-cta btn btn-primary">
               Book a demo <span className="arrow ml-1 inline-block h-4 w-4" aria-hidden>→</span>
             </a>
-            <a href={SITE.phone.href} className="gsap-cta btn btn-ghost">
-              {SITE.phone.display}
-            </a>
+                <a
+                  href={SITE.phone.href}
+                  onClick={() =>
+                    trackEvent("cta_click", { location: "service-hero", medium: "tel" })
+                  }
+                  className="gsap-cta btn btn-ghost"
+                >
+                  {SITE.phone.display}
+                </a>
           </div>
         </div>
         <HeroIconScene
