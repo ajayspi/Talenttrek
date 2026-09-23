@@ -86,13 +86,38 @@ styles/
 - **Headers:** nosniff, DENY, strict referrer, permissions policy
   (`next.config.ts`).
 
-## Deployment (VPS / Self-hosted)
+## Deployment (Vercel)
 
-1. Push to GitHub, pull on the server (`git pull origin master`).
-2. Set the env vars in `/home/ubuntu/talenttrek-next/.env.local`.
+1. Push to GitHub, import the repo in Vercel.
+2. Set the env vars above in the Vercel dashboard.
 3. Point `talenttrek.com.au` DNS at Vercel; keep WordPress at the same
    domain or move the frontend to a subdomain — `next.config.ts` already
    allowlists `talenttrek.com.au` for remote images.
+
+### Branch setup
+
+Vercel deploys from the `main` branch by default. If your repo uses
+`master`, either reconfigure Vercel to use `master` or rename the
+branch:
+
+```bash
+git checkout master
+git branch -m master main
+git push -u origin main
+git push origin --delete master  # optional, after verifying main works
+```
+
+## Deployment (VPS / Self-hosted)
+
+1. Push to GitHub, pull on the server (`git pull origin main`).
+2. Set the env vars in `/home/ubuntu/talenttrek-next/.env.local`.
+3. Build and start:
+   ```bash
+   npm install
+   npm run build
+   npm start   # serves on port 3000
+   ```
+4. Use PM2 or systemd to keep the process running.
 
 ## Brand assets
 
