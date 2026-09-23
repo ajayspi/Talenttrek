@@ -4,7 +4,11 @@
  */
 export const SITE = {
   name: "Talent Trek",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://talenttrek.com.au",
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL?.trim() &&
+    process.env.NEXT_PUBLIC_SITE_URL.trim() !== ""
+      ? process.env.NEXT_PUBLIC_SITE_URL.trim()
+      : "https://talenttrek.com.au",
   wpUrl: process.env.NEXT_PUBLIC_WP_URL ?? "https://talenttrek.com.au",
   tagline: "The polite face of AI",
   description:
