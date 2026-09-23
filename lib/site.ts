@@ -9,7 +9,11 @@ export const SITE = {
     process.env.NEXT_PUBLIC_SITE_URL.trim() !== ""
       ? process.env.NEXT_PUBLIC_SITE_URL.trim()
       : "https://talenttrek.com.au",
-  wpUrl: process.env.NEXT_PUBLIC_WP_URL ?? "https://talenttrek.com.au",
+  wpUrl:
+    process.env.NEXT_PUBLIC_WP_URL?.trim() &&
+    process.env.NEXT_PUBLIC_WP_URL.trim() !== ""
+      ? process.env.NEXT_PUBLIC_WP_URL.trim()
+      : "https://talenttrek.com.au",
   tagline: "The polite face of AI",
   description:
     "Voice Commerce, Chat AI Automotive, Dynamic DriveThru and AI Agent solutions for Australian hospitality, automotive, retail, F&B, healthcare and IT businesses.",
