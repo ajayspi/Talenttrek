@@ -1,3 +1,5 @@
+![Talent Trek - live site](docs/screenshots/talenttrek.jpg)
+
 ﻿# Talent Trek — Next.js Site
 
 Marketing site for Talent Trek (talenttrek.com.au) — AI Voice, Chat &
