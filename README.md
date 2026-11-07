@@ -1,7 +1,8 @@
+
+
+# Talent Trek — Next.js Site
+
 ![Talent Trek - live site](docs/screenshots/talenttrek.jpg)
-
-
-﻿# Talent Trek — Next.js Site
 
 Marketing site for Talent Trek (talenttrek.com.au) — AI Voice, Chat &
 Agent solutions. Next.js 15 App Router + Tailwind CSS + Framer Motion,
