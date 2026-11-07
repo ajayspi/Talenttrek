@@ -3,6 +3,7 @@
 ![Talent Trek - live site](docs/screenshots/talenttrek.jpg)
 
 
+
 Marketing site for Talent Trek (talenttrek.com.au) — AI Voice, Chat &
 Agent solutions. Next.js 15 App Router + Tailwind CSS + Framer Motion,
 pulling blog content from the live WordPress REST API.
